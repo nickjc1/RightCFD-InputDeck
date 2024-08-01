@@ -1,0 +1,22 @@
+<SolverChooserPopup>:
+    title: 'Choose Solver'    
+    auto_dismiss: False
+    size_hint: (0.6, 0.3)
+    pos_hint: {"center_x": 0.5, "top": 0.9}
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: 10
+        spacing: 10
+
+        MyButton:
+            text: "Incompressable Flow Solver"
+            on_release: root.gotoInDetails() 
+        MyButton:
+            text: "Scalar Transport Equation Solver"
+        MyButton:
+            text: "Poisson Equation Solver"
+        MyButton:
+            text: "Mesh Moving Solver"
+

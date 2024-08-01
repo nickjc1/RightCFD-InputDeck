@@ -1,0 +1,32 @@
+<SecondScreen>:
+    name: "inDetails"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Accordion:
+            id: acco  
+            orientation: "vertical"
+            AccordionItem:
+                id: panelOne    
+                title: "One" 
+                Label:
+                    text: "the first Pannel"
+                    font_size: 50    
+            AccordionItem:
+                id: panelTwo    
+                title: "Second"
+                Label:
+                    text: "the Second Pannel"
+                    font_size: 50    
+            AccordionItem:
+                id: panelThree    
+                title: "Third"
+                Label:
+                    text: "the Third Pannel"
+                    font_size: 50    
+
+        MyButton:
+            text: "back"
+            size_hint: (1, 0.1)
+            on_release: root.back2Navi()
