@@ -1,0 +1,34 @@
+
+
+<FirstScreen>:
+    name: "navi"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        Label:
+            text: "Navigation Window"
+            font_size: 32
+        
+        BoxLayout:
+            size_hint: (1, 0.2)
+            orientation: "horizontal"
+            size: root.width, root.height
+            spacing: 10
+            padding: 20
+            MyButton:
+                text:"New"
+                on_press: root.gotoInDetails()    
+            MyButton:
+                text:"Import"
+                on_press: root.gotoInDetails()    
+            MyButton:
+                text:"Save"
+                on_press: root.gotoInDetails()    
+            MyButton:
+                text:"Save As"
+                on_press: root.gotoInDetails()    
+            MyButton:
+                text:"Exit"
+                on_press: root.gotoInDetails()    
