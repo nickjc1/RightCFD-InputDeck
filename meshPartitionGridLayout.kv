@@ -1,0 +1,93 @@
+<BlackLabel@Label>
+    text_size: (self.width, None) #sets the width to the width of the label itself (self.width) and leaves the height unrestricted (None). This is necessary for the halign and valign properties to take effect because it defines the bounding box within which the text will be aligned.
+    halign: "right"
+    color: (0, 0, 0, 1)  
+
+<MeshPartitioningGridLayout>
+    cols: 4    
+    row_force_default: True
+    row_default_height: 50
+    col_force_default: True
+    col_default_width: 200
+    spacing: 10
+    # padding: 20
+
+    # row 1: part_method
+    BlackLabel:
+        id: part_method
+        text: "part_method:"
+    BoxLayout:
+        orientation: "horizontal"    
+        BlackLabel:
+            text: "1"
+        CheckBox:
+            group: "part_method_group"    
+            on_active: root.checkboxSelected(self, self.active, "1") 
+        BlackLabel:
+            text: "2"
+        CheckBox:
+            group: "part_method_group"    
+            on_active: root.checkboxSelected(self, self.active, "2")    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 2: cmargin            
+    BlackLabel: 
+        text: "cmargin:"
+    TextInput:
+        text: ""    
+        multiline: False 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+    
+    # row 3: vmargin
+    BlackLabel:
+        text: "vmargin:"
+    TextInput:
+        text: ""
+        multiline: False
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+        
+    # row 4:  mshift
+    BlackLabel:
+        text: "mshift:"
+    TextInput:
+        text: ""
+        multiline: False
+    TextInput:
+        text: ""
+        multiline: False
+    TextInput:
+        text: ""
+        multiline: False
+
+    # row 5: mscale
+    BlackLabel:
+        text: "mscale:"
+    TextInput:
+        text: ""
+        multiline: False
+    TextInput:
+        text: ""
+        multiline: False
+    TextInput:
+        text: ""
+        multiline: False
+    
+    # row 6: multizone
+    BlackLabel:
+        text: "multizone:"
+    BoxLayout:
+        orientation: "horizontal"    
+        BlackLabel:
+            text: "on"
+        CheckBox:
+            group: "multizone"    
+            on_active: root.checkboxSelected(self, self.active, "on")  
+        BlackLabel:
+            text: "off"            
+        CheckBox:
+            group: "multizone"
+            on_active: root.checkboxSelected(self, self.active, "off")
+            

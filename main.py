@@ -1,3 +1,4 @@
+from kivy.uix.gridlayout import GridLayout
 from kivy.app import App
 # from kivy.uix.widget import Widget
 from kivy.lang import Builder
@@ -33,11 +34,14 @@ class SecondScreen(Screen):
 
     def expand_first_panel(self, dt):
         # Debug: Print the children to understand the order
-        for i in range(len(self.ids.acco.children)):
-            print(self.ids.acco.children[i])
+        # for i in range(len(self.ids.acco.children)):
+        #     print(self.ids.acco.children[i])
     
         # Expand the first panel (last in the children list due to reverse order)
         self.ids.panelOne.collapse = False
+
+    def checkboxClick(self, thecheckBox, isActive):
+        print(isActive)
 
 Builder.load_file("solverChoose.kv")
 class SolverChooserPopup(Popup):
@@ -45,19 +49,25 @@ class SolverChooserPopup(Popup):
         App.get_running_app().root.current = "inDetails"
         self.dismiss()
 
-
-
+Builder.load_file("meshPartitionGridLayout.kv")
+class MeshPartitioningGridLayout(GridLayout):
+    def checkboxSelected(self, theCheckbox, isSelected, selectedValue):
+        print("{} on {}".format(isSelected, selectedValue))
 
 
 
 class InputDeckApp(App):
     def build(self):
+        
         Window.size = (1000, 800)
         Window.clearcolor = (252/255.0, 251/255.0, 244/255.0, 1)
+
         sm = AppScreenManager()
         sm.add_widget(FirstScreen())
         sm.add_widget(SecondScreen())
+
         return sm
+
 
 if __name__ == "__main__":
     InputDeckApp().run()
