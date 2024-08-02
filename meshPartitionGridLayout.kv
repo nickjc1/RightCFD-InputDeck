@@ -1,0 +1,30 @@
+<MeshPartitioningGridLayout>:
+    cols: 2    
+    row_force_default: True
+    row_default_height: 50
+    col_force_default: True
+    col_default_width: 200
+    Label:
+        id: part_method
+        text: "part_method"
+        color: (0, 0, 0, 1)
+    BoxLayout:
+        orientation: "horizontal"    
+        Label:
+            text: "1"
+            color: (0, 0, 0, 1)
+        CheckBox:
+            group: "part_method_group"    
+            on_active: root.checkboxClick(self, self.active, "1") 
+        Label:
+            text: "2"
+            color: (0, 0, 0, 1)
+        CheckBox:
+            group: "part_method_group"    
+            on_active: root.checkboxClick(self, self.active, "2")    
+                        
+    Label: 
+        text: "cmargin"
+        color: (0, 0, 0, 1)
+    TextInput:
+        text: ""    

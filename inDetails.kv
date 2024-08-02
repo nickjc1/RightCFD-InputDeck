@@ -9,10 +9,8 @@
             orientation: "vertical"
             AccordionItem:
                 id: panelOne    
-                title: "One" 
-                Label:
-                    text: "the first Pannel"
-                    font_size: 50    
+                title: "Mesh Partitioning" 
+                MeshPartitioningGridLayout:
             AccordionItem:
                 id: panelTwo    
                 title: "Second"
@@ -30,3 +28,5 @@
             text: "back"
             size_hint: (1, 0.1)
             on_release: root.back2Navi()
+
+        
