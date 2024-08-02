@@ -51,13 +51,8 @@ class SolverChooserPopup(Popup):
 
 Builder.load_file("meshPartitionGridLayout.kv")
 class MeshPartitioningGridLayout(GridLayout):
-    def checkboxClick(self, theCheckbox, isSelected, selectedValue):
+    def checkboxSelected(self, theCheckbox, isSelected, selectedValue):
         print("{} on {}".format(isSelected, selectedValue))
-
-    
-
-
-
 
 
 
