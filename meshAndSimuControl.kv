@@ -1,0 +1,199 @@
+<BlackLabel@Label>
+    text_size: (self.width, None) #sets the width to the width of the label itself (self.width) and leaves the height unrestricted (None). This is necessary for the halign and valign properties to take effect because it defines the bounding box within which the text will be aligned.
+    halign: "left"
+    color: (0, 0, 0, 1)  
+
+<CustomizedSpinnerOption@SpinnerOption>
+    height: 30
+    # background_normal: ""
+    # background_color: utils.get_color_from_hex("#2B93C3")
+
+<MeshAndSimuControlLayout>
+
+    # Add below two lines to ensure that the scrollView which contains this meshAndSimuCOntrollayout works.
+    size_hint_y: None
+    height: self.minimum_height 
+
+    cols: 4    
+    row_force_default: True
+    row_default_height: 50
+    col_force_default: True
+    col_default_width: 200
+    spacing: 10
+    padding: 20
+
+    # row 1: part_method
+    BlackLabel:
+        id: part_method
+        text: "part_method:"
+    BoxLayout:
+        orientation: "horizontal"    
+        BlackLabel:
+            text: "1"
+            halign: "right"
+        CheckBox:
+            group: "part_method_group"    
+            on_active: root.checkboxSelected(self, "1") 
+        BlackLabel:
+            text: "2"
+            halign: "right"
+        CheckBox:
+            group: "part_method_group"    
+            on_active: root.checkboxSelected(self, "2")    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 2: cmargin            
+    BlackLabel: 
+        text: "cmargin:"
+    TextInput:
+        text: ""    
+        multiline: False 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+    
+    # row 3: vmargin
+    BlackLabel:
+        text: "vmargin:"
+    TextInput:
+        text: ""
+        multiline: False
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+        
+    # row 4:  mshift
+    BlackLabel:
+        text: "mshift:"
+    TextInput:
+        text: ""
+        multiline: False
+    TextInput:
+        text: ""
+        multiline: False
+    TextInput:
+        text: ""
+        multiline: False
+
+    # row 5: mscale
+    BlackLabel:
+        text: "mscale:"
+    TextInput:
+        text: ""
+        multiline: False
+    TextInput:
+        text: ""
+        multiline: False
+    TextInput:
+        text: ""
+        multiline: False
+    
+    # row 6: multizone
+    BlackLabel:
+        text: "multizone:"
+    BoxLayout:
+        orientation: "horizontal"    
+        BlackLabel:
+            text: "on"
+            halign: "right"
+        CheckBox:
+            group: "multizone"    
+            on_active: root.checkboxSelected(self, "on")  
+        BlackLabel:
+            text: "off"            
+            halign: "right"
+        CheckBox:
+            group: "multizone"
+            on_active: root.checkboxSelected(self, "off")
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 7: meshout_flag
+    BlackLabel:
+        text: "meshout_flag:"
+    BoxLayout:
+        orientation: "horizontal"
+        BlackLabel:
+            text: "1"
+            halign: "right"
+        CheckBox:
+            group: "meshout_flag"
+            on_active: root.checkboxSelected(self, "1")
+        BlackLabel:
+            text: "2"
+            halign: "right"
+        CheckBox:
+            group: "meshout_flag"
+            on_active: root: root.checkboxSelected(self, "2")           
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+        
+    # row 8: Empty Row to seperate two entries
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+    
+    # row 9: restart
+    BlackLabel:
+        text: "restart:"
+    BoxLayout:
+        orientation: "horizontal"
+        BlackLabel:
+            text: "on"
+            halign: "right"
+        CheckBox:
+            group: "restart"    
+            on_active: root.checkboxSelected(self, "on")  
+        BlackLabel:
+            text: "off"            
+            halign: "right"
+        CheckBox:
+            group: "restart"
+            on_active: root.checkboxSelected(self, "off")
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+    
+    # row 10: testcase 
+    BlackLabel:
+        text: "testcase:"       
+    Spinner:
+        id: testcase
+        text: ""
+        values: ["0", "1", "2"]
+        on_text: root.spinnerClicked(self.text)
+        option_cls: "CustomizedSpinnerOption"  
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 11: analytic
+    BlackLabel:
+        text: "analytic:"
+    Spinner:
+        id: analytic
+        text: ""
+        values: ["0", "1", "2", "3", "-1"]
+        on_text: root.spinnerClicked(self. text)
+        option_cls: "CustomizedSpinnerOption"
+    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 12: steady    
+    BlackLabel:
+        text: "steady:"
+    BoxLayout:
+        orientation: "horizontal"
+        BlackLabel:
+            text: "on"
+            halign: "right"
+        CheckBox:
+            group: "steady"
+            on_active: root.checkboxSelected(self, "on")
+        BlackLabel:
+            text: "off"
+            halign: "right"
+        CheckBox:
+            group: "steady"
+            on_active: root.checkboxSelected(self, "off")       
+
+    # row 13: 
