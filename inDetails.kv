@@ -1,3 +1,14 @@
+<Separator@Widget>:
+    size_hint_y: None  # In order to control the height manually
+    height: 5 # Thickness of the separator line
+    canvas:
+        Color:
+            rgba: 0, 0, 0, 1  # Black color for the line
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
 <SecondScreen>:
     name: "inDetails"
     BoxLayout:
@@ -9,9 +20,12 @@
             orientation: "vertical"
             AccordionItem:
                 id: panelOne    
-                title: "Mesh Partitioning and Manipulation" 
+                title: "Mesh Partitioning/Manipulation and Simulation Control" 
                 # min_space: 35
-                MeshPartitioningGridLayout:
+                ScrollView:
+                    orientation: "vertical"
+                    MeshAndSimuControlLayout:
+
             AccordionItem:
                 id: panelTwo    
                 title: "Simulation Control"
