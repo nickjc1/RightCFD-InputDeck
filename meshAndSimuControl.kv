@@ -15,10 +15,10 @@
     height: self.minimum_height 
 
     cols: 4    
-    row_force_default: True
+    row_force_default: True 
     row_default_height: 50
-    col_force_default: True
-    col_default_width: 200
+    col_force_default: True 
+    col_default_width: 260
     spacing: 10
     padding: 20
 
@@ -195,5 +195,141 @@
         CheckBox:
             group: "steady"
             on_active: root.checkboxSelected(self, "off")       
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
 
-    # row 13: 
+    # row 13: fixed_dt 
+    BlackLabel:
+        text: "fixed_dt:"
+    BoxLayout:
+        orientation: "horizontal"
+        BlackLabel:
+            text: "on"
+            halign: "right"
+        CheckBox:
+            group: "fixed_dt"
+            on_active: root.checkboxSelected(self, "on")
+        BlackLabel:
+            text: "off"
+            halign: "right"
+        CheckBox:
+            group: "fixed_dt"
+            on_active: root.checkboxSelected(self, "off")        
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 14: dt
+    BlackLabel:
+        text: "dt:"
+    TextInput:
+        text: ""
+        multiline: False        
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 15: CFL_range
+    BlackLabel:
+        text: "CFL_range"
+    TextInput:
+        text: ""
+        multiline: False    
+    TextInput:
+        text: ""
+        multiline: False    
+    TextInput:
+        text: ""
+        multiline: False    
+    
+    # row 16: ntsout
+    BlackLabel:
+        text: "ntsout:"
+    TextInput:
+        text: ""
+        multiline: False
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 17: nts_max
+    BlackLabel:
+        text: "nts_max:"
+    TextInput:
+        text: ""
+        multiline: False    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 18: steady_conv_order    
+    BlackLabel:
+        text: "steady_conv_order:"
+    TextInput:
+        text: ""
+        multiline: False    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 19: steady_tol    
+    BlackLabel:
+        text: "steady_tol:"
+    TextInput:
+        text: ""
+        multiline: False    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 20: steady_monitor 
+    BlackLabel:
+        text: "steady_monitor:"
+    Spinner:
+        id: steady_monitor 
+        text: ""
+        values: ["0", "1", "2"]
+        on_text: root.spinnerClicked(self.text)
+        option_cls: "CustomizedSpinnerOption"
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 21: tbeg 
+    BlackLabel:
+        text: "tbeg:"
+    TextInput:
+        text: ""
+        multiline: False    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+        
+    # row 22: tend 
+    BlackLabel:
+        text: "tend:"
+    TextInput:
+        text: ""
+        multiline: False    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+        
+    # row 23: niterno_max 
+    BlackLabel:
+        text: "niterno_max:"
+    TextInput:
+        text: ""
+        multiline: False    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+        
+    # row 24: niter_conv_order 
+    BlackLabel:
+        text: "niter_conv_order:"
+    TextInput:
+        text: ""
+        multiline: False    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+        
+    # row 25: niter_tol 
+    BlackLabel:
+        text: "niter_tol:"
+    TextInput:
+        text: ""
+        multiline: False    
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+                
