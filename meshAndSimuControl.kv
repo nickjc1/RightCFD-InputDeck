@@ -59,6 +59,7 @@
     TextInput:
         text: ""
         multiline: False
+        on_text: root.typeInsideTextInput("vmargin", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
         
@@ -68,12 +69,15 @@
     TextInput:
         text: ""
         multiline: False
+        on_text: root.typeInsideTextInput("mshift", self.text, seqLen = 3, idxOfCurrentTextIpt = 0)
     TextInput:
         text: ""
         multiline: False
+        on_text: root.typeInsideTextInput("mshift", self.text, seqLen = 3, idxOfCurrentTextIpt = 1)
     TextInput:
         text: ""
         multiline: False
+        on_text: root.typeInsideTextInput("mshift", self.text, seqLen = 3, idxOfCurrentTextIpt = 2)
 
     # row 5: mscale
     BlackLabel:
@@ -81,12 +85,15 @@
     TextInput:
         text: ""
         multiline: False
+        on_text: root.typeInsideTextInput("mscale", self.text, seqLen = 3, idxOfCurrentTextIpt = 0)
     TextInput:
         text: ""
         multiline: False
+        on_text: root.typeInsideTextInput("mscale", self.text, seqLen = 3, idxOfCurrentTextIpt = 1)
     TextInput:
         text: ""
         multiline: False
+        on_text: root.typeInsideTextInput("mscale", self.text, seqLen = 3, idxOfCurrentTextIpt = 2)
     
     # row 6: multizone
     BlackLabel:
@@ -161,8 +168,8 @@
         id: testcase
         text: ""
         values: ["0", "1", "2"]
-        on_text: root.spinnerClicked(self.text)
-        option_cls: "CustomizedSpinnerOption"  
+        on_text: root.spinnerClicked("textcase", self.text)
+        option_cls: "CustomizedSpinnerOption" # For customize the option outlook of the spinner layout 
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
@@ -173,7 +180,7 @@
         id: analytic
         text: ""
         values: ["0", "1", "2", "3", "-1"]
-        on_text: root.spinnerClicked(self. text)
+        on_text: root.spinnerClicked("analytic", self. text)
         option_cls: "CustomizedSpinnerOption"
     
     Label: # Empty position for row alignment
@@ -225,6 +232,7 @@
     TextInput:
         text: ""
         multiline: False        
+        on_text: root.typeInsideTextInput("dt", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
@@ -234,12 +242,15 @@
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("CFL_range", self.text, seqLen = 3, idxOfCurrentTextIpt = 0)
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("CFL_range", self.text, seqLen = 3, idxOfCurrentTextIpt = 1)
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("CFL_range", self.text, seqLen = 3, idxOfCurrentTextIpt = 2)
     
     # row 16: ntsout
     BlackLabel:
@@ -247,6 +258,7 @@
     TextInput:
         text: ""
         multiline: False
+        on_text: root.typeInsideTextInput("ntsout", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
@@ -256,6 +268,7 @@
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("nts_max", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
@@ -265,6 +278,7 @@
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("steady_conv_order", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
@@ -274,6 +288,7 @@
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("steady_tol", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
@@ -284,7 +299,7 @@
         id: steady_monitor 
         text: ""
         values: ["0", "1", "2"]
-        on_text: root.spinnerClicked(self.text)
+        on_text: root.spinnerClicked("steady_monitor", self.text)
         option_cls: "CustomizedSpinnerOption"
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
@@ -295,6 +310,7 @@
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("tbeg", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
         
@@ -304,6 +320,7 @@
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("tend", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
         
@@ -313,6 +330,7 @@
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("niterno_max", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
         
@@ -322,6 +340,7 @@
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("niter_conv_order", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
         
@@ -331,6 +350,7 @@
     TextInput:
         text: ""
         multiline: False    
+        on_text: root.typeInsideTextInput("niter_tol", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
                 
