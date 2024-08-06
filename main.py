@@ -1,12 +1,9 @@
 from kivy.config import Config
-
 # Set the desired window size
 Config.set('graphics', 'width', '1000')
 Config.set('graphics', 'height', '750')
-
 # Disable window resizing
 Config.set('graphics', 'resizable', False)
-
 
 from kivy.uix.gridlayout import GridLayout
 from kivy.app import App
@@ -14,14 +11,15 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.clock import Clock
 from kivy.core.window import Window
-
 from kivy.factory import Factory
 from kivy.uix.popup import Popup
 
 
-# Window.minimum_width, Window.minimum_height = Window.size
-# Window.maximum_width, Window.maximum_height = Window.size
-# Window.resizable = False
+
+# create a dictionary container to store the data from user input
+entryDataDict = {}
+
+
 
 Builder.load_file("main.kv")
 class AppScreenManager(ScreenManager):
@@ -60,11 +58,41 @@ class SolverChooserPopup(Popup):
 
 Builder.load_file("meshAndSimuControl.kv")
 class MeshAndSimuControlLayout(GridLayout):
-    def checkboxSelected(self, theCheckbox, selectedValue):
-        print("{} on {}".format(theCheckbox.active, selectedValue))
+
+    """
+    * The method to save user selection as well as selection key to entryDataDict
+    * This will be bined to on_active method of a CheckBox object
+    """
+    def checkboxSelected(self, theCheckbox, entryKey, selectedValue):
+        entryDataDict[entryKey] = selectedValue
+        print(entryDataDict)
+        print(len(entryDataDict))
     
-    def spinnerClicked(self, selectedValue):
-        print("{}".format(selectedValue))
+    """
+    * The method to save user selection as well as selection key of a spinner to entryDataDict
+    * this will be bined to on_text method of a Spinner object
+    """
+    def spinnerClicked(self, entryKey, selectedValue):
+        entryDataDict[entryKey] = selectedValue
+        print(entryDataDict)
+    
+    """
+    * The method to save user input inside TextInput box to entryDataDict
+    * This will be bined to on_text method of a TextInput object
+    * Kwarg seqLen: if it is larger than 0, it means a series of textInputs will be wrapped into a list to assgin to a single key in the entryDataDict
+    * Kwarg idxOfCurrentTextIpt represents the index for the current editing textInput inside the list of the series fo textInputs
+    """
+    def typeInsideTextInput(self, key, value, *, seqLen = 0, idxOfCurrentTextIpt = -1):
+        if seqLen > 0:
+            if key in entryDataDict:
+                listOfValues = entryDataDict[key]
+                listOfValues[idxOfCurrentTextIpt] = value
+            else:
+                entryDataDict[key] = ["" for i in range(seqLen)]
+                entryDataDict[key][idxOfCurrentTextIpt] = value
+        else:
+            entryDataDict[key] = value
+        print(entryDataDict)
 
 
 class InputDeckApp(App):
