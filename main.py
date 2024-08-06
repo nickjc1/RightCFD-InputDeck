@@ -1,12 +1,9 @@
 from kivy.config import Config
-
 # Set the desired window size
 Config.set('graphics', 'width', '1000')
 Config.set('graphics', 'height', '750')
-
 # Disable window resizing
 Config.set('graphics', 'resizable', False)
-
 
 from kivy.uix.gridlayout import GridLayout
 from kivy.app import App
@@ -14,14 +11,15 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.clock import Clock
 from kivy.core.window import Window
-
 from kivy.factory import Factory
 from kivy.uix.popup import Popup
 
 
-# Window.minimum_width, Window.minimum_height = Window.size
-# Window.maximum_width, Window.maximum_height = Window.size
-# Window.resizable = False
+
+# create a dictionary container to store the data from user input
+entryDataDict = {}
+
+
 
 Builder.load_file("main.kv")
 class AppScreenManager(ScreenManager):
@@ -60,11 +58,17 @@ class SolverChooserPopup(Popup):
 
 Builder.load_file("meshAndSimuControl.kv")
 class MeshAndSimuControlLayout(GridLayout):
-    def checkboxSelected(self, theCheckbox, selectedValue):
-        print("{} on {}".format(theCheckbox.active, selectedValue))
+    def checkboxSelected(self, theCheckbox, entryKey, selectedValue):
+        entryDataDict[entryKey] = selectedValue
+        print(entryDataDict)
+        print(len(entryDataDict))
     
     def spinnerClicked(self, selectedValue):
         print("{}".format(selectedValue))
+
+    def typeInsideTextInput(self, key, value):
+        entryDataDict[key] = value
+        print(entryDataDict)
 
 
 class InputDeckApp(App):

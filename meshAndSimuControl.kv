@@ -33,13 +33,13 @@
             halign: "right"
         CheckBox:
             group: "part_method_group"    
-            on_active: root.checkboxSelected(self, "1") 
+            on_active: root.checkboxSelected(self, "part_method", "1") 
         BlackLabel:
             text: "2"
             halign: "right"
         CheckBox:
             group: "part_method_group"    
-            on_active: root.checkboxSelected(self, "2")    
+            on_active: root.checkboxSelected(self, "part_method", "2")    
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
@@ -49,6 +49,7 @@
     TextInput:
         text: ""    
         multiline: False 
+        on_text: root.typeInsideTextInput("cmargin", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
     
@@ -97,13 +98,13 @@
             halign: "right"
         CheckBox:
             group: "multizone"    
-            on_active: root.checkboxSelected(self, "on")  
+            on_active: root.checkboxSelected(self, "multizone", "on")  
         BlackLabel:
             text: "off"            
             halign: "right"
         CheckBox:
             group: "multizone"
-            on_active: root.checkboxSelected(self, "off")
+            on_active: root.checkboxSelected(self, "multizone", "off")
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
@@ -117,13 +118,13 @@
             halign: "right"
         CheckBox:
             group: "meshout_flag"
-            on_active: root.checkboxSelected(self, "1")
+            on_active: root.checkboxSelected(self, "meshout_flag", "1")
         BlackLabel:
             text: "2"
             halign: "right"
         CheckBox:
             group: "meshout_flag"
-            on_active: root: root.checkboxSelected(self, "2")           
+            on_active: root: root.checkboxSelected(self, "meshout_flag", "2")           
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
         
@@ -143,13 +144,13 @@
             halign: "right"
         CheckBox:
             group: "restart"    
-            on_active: root.checkboxSelected(self, "on")  
+            on_active: root.checkboxSelected(self, "restart", "on")  
         BlackLabel:
             text: "off"            
             halign: "right"
         CheckBox:
             group: "restart"
-            on_active: root.checkboxSelected(self, "off")
+            on_active: root.checkboxSelected(self, "restart", "off")
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
     
@@ -188,13 +189,13 @@
             halign: "right"
         CheckBox:
             group: "steady"
-            on_active: root.checkboxSelected(self, "on")
+            on_active: root.checkboxSelected(self, "steady", "on")
         BlackLabel:
             text: "off"
             halign: "right"
         CheckBox:
             group: "steady"
-            on_active: root.checkboxSelected(self, "off")       
+            on_active: root.checkboxSelected(self, "steady", "off")       
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
@@ -208,13 +209,13 @@
             halign: "right"
         CheckBox:
             group: "fixed_dt"
-            on_active: root.checkboxSelected(self, "on")
+            on_active: root.checkboxSelected(self, "fixed_dt", "on")
         BlackLabel:
             text: "off"
             halign: "right"
         CheckBox:
             group: "fixed_dt"
-            on_active: root.checkboxSelected(self, "off")        
+            on_active: root.checkboxSelected(self, "fixed_dt", "off")        
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
