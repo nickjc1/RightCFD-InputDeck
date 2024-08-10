@@ -14,11 +14,8 @@ from kivy.core.window import Window
 from kivy.factory import Factory
 from kivy.uix.popup import Popup
 
-
-
-# create a dictionary container to store the data from user input
-entryDataDict = {}
-
+from inDataDict import entryDataDict
+from inFileManagement import InFileManagementPopupWindow
 
 
 Builder.load_file("main.kv")
@@ -32,9 +29,11 @@ class FirstScreen(Screen):
         popup.open()
 
 class SecondScreen(Screen):
-    def back2Navi(self):
-        self.manager.current = "navi"
-        self.manager.transition.direction = "right"
+    def saveAs(self):
+        # self.manager.current = "navi"
+        # self.manager.transition.direction = "right"
+        saveAsLayout = InFileManagementPopupWindow()
+        saveAsLayout.open()
 
     def on_enter(self, *args):
         Clock.schedule_once(self.expand_first_panel)

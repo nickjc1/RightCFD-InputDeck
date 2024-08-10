@@ -1,0 +1,34 @@
+<InFileManagementPopupWindow>
+    title: "Save as"
+    auto_dismiss: False
+    size_hint: (0.8, 0.8)
+    pos_hint: {"center_x": 0.5, "top": 0.9}
+    id: inFileManagementPopup
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height    
+        padding: 10
+        spacing: 10
+        InFileChooser:
+            filters: [root.isDirectoryAndOutputToInPath] 
+        
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: (1, 0.1)
+            TextInput:
+                id: inPath   
+                size_hint: (0.6, 1)
+                text: ""
+            MyButton:
+                text: "Save"            
+                size_hint: (0.2, 1)
+                # on_press: root.saveData()   
+                on_release: root.saveDataAndDismissInFileManagementPopupWindow()
+            MyButton:
+                text: "Cancel"    
+                size_hint: (0.2, 1)
+                on_release: root.dismiss()
+                
+
+<InFileChooser>
+

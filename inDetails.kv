@@ -1,12 +1,12 @@
-<Separator@Widget>:
-    size_hint_y: None  # In order to control the height manually
-    height: 5 # Thickness of the separator line
-    canvas:
-        Color:
-            rgba: 0, 0, 0, 1  # Black color for the line
-        Rectangle:
-            size: self.size
-            pos: self.pos
+# <Separator@Widget>:
+#     size_hint_y: None  # In order to control the height manually
+#     height: 5 # Thickness of the separator line
+#     canvas:
+#         Color:
+#             rgba: 0, 0, 0, 1  # Black color for the line
+#         Rectangle:
+#             size: self.size
+#             pos: self.pos
 
 
 <SecondScreen>:
@@ -40,8 +40,8 @@
                     font_size: 50    
 
         MyButton:
-            text: "back"
+            text: "Save"
             size_hint: (1, 0.1)
-            on_release: root.back2Navi()
+            on_release: root.saveAs()
 
         
