@@ -14,8 +14,8 @@ from kivy.core.window import Window
 from kivy.factory import Factory
 from kivy.uix.popup import Popup
 
-from inDataDict import entryDataDict
-from inFileManagement import InFileManagementPopupWindow
+from inDataDict import entryDataDict # The File contains global variable entryDataDict
+from inFileManagement import InFileManagementPopupWindow # The File contains popup window, which is used to  save data to local disk, functionality
 
 
 Builder.load_file("main.kv")
@@ -24,8 +24,22 @@ class AppScreenManager(ScreenManager):
          super().__init__(**kwargs)
 
 class FirstScreen(Screen):
-    def gotoInDetails(self):
+    def createNewInFile(self):
         popup = SolverChooserPopup()
+        popup.open()
+    
+    def importExistingInFile(self):
+        popup = InFileManagementPopupWindow()
+
+        # A widget can only be removed from its parent widget.
+        # So in order to remove inPathTextInput, we need to find out its parent widget.
+        # Then remove the textinput from its parent
+        inPathTextInputParent = popup.ids.inPathTextInput.parent
+        inPathTextInputParent.remove_widget(popup.ids.inPathTextInput)
+
+        popup.ids.leftButton.text = "Import"
+        popup.ids.inFileChooser.filters = []
+
         popup.open()
 
 class SecondScreen(Screen):
