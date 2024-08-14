@@ -23,6 +23,7 @@ class AppScreenManager(ScreenManager):
      def __init__(self, **kwargs):
          super().__init__(**kwargs)
 
+
 class FirstScreen(Screen):
     def createNewInFile(self):
         popup = SolverChooserPopup()
@@ -38,9 +39,13 @@ class FirstScreen(Screen):
         inPathTextInputParent.remove_widget(popup.ids.inPathTextInput)
 
         popup.ids.leftButton.text = "Import"
-        popup.ids.inFileChooser.filters = []
+        popup.ids.inFileChooser.filters = [] # The file chooser window will show both file and directory
+
+        # call this method to bind ReadDataAndDismissInFileManagementPopupWindow() to popup window InFileChooser's property selection
+        popup.bindReadDataAndDismissInFileManagementPopupWindowToInFileChooser()
 
         popup.open()
+
 
 class SecondScreen(Screen):
     def saveAs(self):

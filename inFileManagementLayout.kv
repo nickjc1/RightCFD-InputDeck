@@ -18,7 +18,10 @@
 	        #     •directory: The path of the directory currently being processed by the FileChooserListView.
 	        #     •filename: The name of the file or directory within that directory.
             # 3. Kivy automatically calls the filter function with these two arguments for each item in the directory.
+
             filters: [root.isDirectoryAndOutputToInPathTextInput] 
+            # on_selection: root.readDataAndDismissInFileManagementPopupWindow(self.selection)
+             
         
         BoxLayout:
             orientation: "horizontal"
