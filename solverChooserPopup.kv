@@ -1,7 +1,9 @@
+#:include customizedComponents.kv
+
 <SolverChooserPopup>:
     title: 'Choose Solver'    
     auto_dismiss: False
-    size_hint: (0.6, 0.3)
+    size_hint: (0.6, 0.5)
     pos_hint: {"center_x": 0.5, "top": 0.9}
 
     BoxLayout:
@@ -12,11 +14,15 @@
 
         MyButton:
             text: "Incompressable Flow Solver"
-            on_release: root.gotoInDetails() 
         MyButton:
-            text: "Scalar Transport Equation Solver"
+            text: "Space Charge Solver"
+            on_release: root.gotoInDetails() 
         MyButton:
             text: "Poisson Equation Solver"
         MyButton:
             text: "Mesh Moving Solver"
+        MyButton:
+            text: "Compressible flow Solver"
+        MyButton:
+            text: "Scalar transport Solver"        
 

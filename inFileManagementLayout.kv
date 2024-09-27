@@ -3,32 +3,47 @@
     auto_dismiss: False
     size_hint: (0.8, 0.8)
     pos_hint: {"center_x": 0.5, "top": 0.9}
-    id: inFileManagementPopup
     BoxLayout:
         orientation: "vertical"
         size: root.width, root.height    
         padding: 10
         spacing: 10
         InFileChooser:
-            filters: [root.isDirectoryAndOutputToInPath] 
+            id: inFileChooser   
+             
+            # 1. filters Property:
+    	    #     •The filters property of FileChooserListView is a list of functions (or glob patterns) that are used to determine which files and directories should be displayed.
+	        #     •Each function in this list is called for every item (file or directory) in the current directory being displayed.
+	        # 2. Function Signature:
+	        #     •The filter function must accept two parameters:
+	        #     •directory: The path of the directory currently being processed by the FileChooserListView.
+	        #     •filename: The name of the file or directory within that directory.
+            # 3. Kivy automatically calls the filter function with these two arguments for each item in the directory.
+
+            filters: [root.isDirectoryAndOutputToInPathTextInput] 
+            # on_selection: root.readDataAndDismissInFileManagementPopupWindow(self.selection)
+             
         
         BoxLayout:
             orientation: "horizontal"
             size_hint: (1, 0.1)
             TextInput:
-                id: inPath   
+                id: inPathTextInput   
                 size_hint: (0.6, 1)
                 text: ""
             MyButton:
+                id: leftButton    
                 text: "Save"            
                 size_hint: (0.2, 1)
-                # on_press: root.saveData()   
-                on_release: root.saveDataAndDismissInFileManagementPopupWindow()
+                # on_press: root.saveDataAndDismissInFileManagementPopupWindow()
             MyButton:
+                id: rightButton    
                 text: "Cancel"    
                 size_hint: (0.2, 1)
                 on_release: root.dismiss()
                 
+
+
 
 <InFileChooser>
 
