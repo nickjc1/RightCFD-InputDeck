@@ -108,9 +108,17 @@ class InFileManagementPopupWindow(Popup):
             for id in ids:
                 # print("    " + id)
                 if key == id.split("-")[0] and "-" in id: # split id string to keep the part that is same as the keys in the entryDataDict 
+                    """
+                    * 2version keyword inside a id means the widget of this id can be either a list or a string
+                    * when reading this kind of data from a in file, need to determine which version should be use to approrate put this data in both entryDataDict and inFileDetails window widget.
+                    """
                     if type(entryDataDict[key]) == list: # if the value of the key in the entryDataDict is a list
+                        if "2version" in id:
+                            localKey = key + "-2version_"
+                        else:
+                            localKey = key + "-"
                         for i in range(len(entryDataDict[key])):
-                            ids[key + "-text_{}".format(i)].text = entryDataDict[key][i]
+                            ids[localKey + "text_{}".format(i)].text = entryDataDict[key][i]
                         break
                     else:
                         if "check" in id: # if the widget of the id is a Checkbox
@@ -119,10 +127,12 @@ class InFileManagementPopupWindow(Popup):
                         elif "spinner" in id: # if the widget of the id is a Spinner
                             ids[key + "-spinner"].text = entryDataDict[key]
                             break
+                        elif "2version" in id: # if current data version from in file is a single string
+                            ids[key + "-2version_text_0"].text = entryDataDict[key] # this line will triggle typeInsideTextInput() of meshAndSimuControl class so that the data will be convert into a list
+                            break
                         else: # if the widget of the id is a single TextInput
                             ids[key + "-"].text = entryDataDict[key]
                             break
-            # print(len(entryDataDict))
 
     
 class InFileChooser(FileChooserListView):

@@ -3,7 +3,7 @@
 <SolverChooserPopup>:
     title: 'Choose Solver'    
     auto_dismiss: False
-    size_hint: (0.6, 0.5)
+    size_hint: (0.6, 0.7)
     pos_hint: {"center_x": 0.5, "top": 0.9}
 
     BoxLayout:
@@ -13,7 +13,15 @@
         spacing: 10
 
         MyButton:
+            text: "Scalar Transport Solver"        
+        MyButton:
             text: "Incompressable Flow Solver"
+        MyButton:
+            text: "Compressible Flow Solver"
+        MyButton:
+            text: "Megnetohydrodynics (MHD) Solver"    
+        MyButton:
+            text: "Shallow Water Solver"    
         MyButton:
             text: "Space Charge Solver"
             on_release: root.gotoInDetails() 
@@ -22,7 +30,6 @@
         MyButton:
             text: "Mesh Moving Solver"
         MyButton:
-            text: "Compressible flow Solver"
-        MyButton:
-            text: "Scalar transport Solver"        
+            text: "Mesh Smoothing Solver"
+
 
