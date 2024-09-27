@@ -8,8 +8,9 @@
 #             size: self.size
 #             pos: self.pos
 
+#:include customizedComponents.kv
 
-<SecondScreen>:
+<InFileDetailsScreen>
     name: "inDetails"
     BoxLayout:
         orientation: "vertical"
@@ -23,8 +24,10 @@
                 title: "Mesh Partitioning/Manipulation and Simulation Control" 
                 # min_space: 35
                 ScrollView:
+                    id: panelOneScrollView
                     orientation: "vertical"
                     MeshAndSimuControlLayout:
+                        id: meshAndSimuControlLayout
 
             AccordionItem:
                 id: panelTwo    
@@ -39,9 +42,17 @@
                     text: "the Third Pannel"
                     font_size: 50    
 
-        MyButton:
-            text: "Save"
-            size_hint: (1, 0.1)
-            on_release: root.saveAs()
+        BoxLayout:
+            size_hint: (1, 0.06)
+            orientation: "horizontal"
+
+            MyButton:
+                text: "Save"
+                # size_hint: (1, 0.1)
+                on_release: root.saveAs()
+            MyButton:
+                text: "Cancel"
+                on_release: root.cancel()
+
 
         

@@ -24,7 +24,6 @@
 
     # row 1: part_method
     BlackLabel:
-        id: part_method
         text: "part_method:"
     BoxLayout:
         orientation: "horizontal"    
@@ -32,12 +31,14 @@
             text: "1"
             halign: "right"
         CheckBox:
+            id: part_method-check_1    
             group: "part_method_group"    
             on_active: root.checkboxSelected(self, "part_method", "1") 
         BlackLabel:
             text: "2"
             halign: "right"
         CheckBox:
+            id: part_method-check_2    
             group: "part_method_group"    
             on_active: root.checkboxSelected(self, "part_method", "2")    
     Label: # Empty position for row alignment
@@ -47,6 +48,7 @@
     BlackLabel: 
         text: "cmargin:"
     TextInput:
+        id: cmargin-    
         text: ""    
         multiline: False 
         on_text: root.typeInsideTextInput("cmargin", self.text)
@@ -57,6 +59,7 @@
     BlackLabel:
         text: "vmargin:"
     TextInput:
+        id: vmargin-    
         text: ""
         multiline: False
         on_text: root.typeInsideTextInput("vmargin", self.text)
@@ -67,14 +70,17 @@
     BlackLabel:
         text: "mshift:"
     TextInput:
+        id: mshift-text_0    
         text: ""
         multiline: False
         on_text: root.typeInsideTextInput("mshift", self.text, seqLen = 3, idxOfCurrentTextIpt = 0)
     TextInput:
+        id: mshift-text_1    
         text: ""
         multiline: False
         on_text: root.typeInsideTextInput("mshift", self.text, seqLen = 3, idxOfCurrentTextIpt = 1)
     TextInput:
+        id: mshift-text_2    
         text: ""
         multiline: False
         on_text: root.typeInsideTextInput("mshift", self.text, seqLen = 3, idxOfCurrentTextIpt = 2)
@@ -83,14 +89,17 @@
     BlackLabel:
         text: "mscale:"
     TextInput:
+        id: mscale-text_0    
         text: ""
         multiline: False
         on_text: root.typeInsideTextInput("mscale", self.text, seqLen = 3, idxOfCurrentTextIpt = 0)
     TextInput:
+        id: mscale-text_1    
         text: ""
         multiline: False
         on_text: root.typeInsideTextInput("mscale", self.text, seqLen = 3, idxOfCurrentTextIpt = 1)
     TextInput:
+        id: mscale-text_2    
         text: ""
         multiline: False
         on_text: root.typeInsideTextInput("mscale", self.text, seqLen = 3, idxOfCurrentTextIpt = 2)
@@ -104,12 +113,14 @@
             text: "on"
             halign: "right"
         CheckBox:
+            id: multizone-check_on    
             group: "multizone"    
             on_active: root.checkboxSelected(self, "multizone", "on")  
         BlackLabel:
             text: "off"            
             halign: "right"
         CheckBox:
+            id: multizone-check_off    
             group: "multizone"
             on_active: root.checkboxSelected(self, "multizone", "off")
     Label: # Empty position for row alignment
@@ -124,12 +135,14 @@
             text: "1"
             halign: "right"
         CheckBox:
+            id: meshout_flag-check_1    
             group: "meshout_flag"
             on_active: root.checkboxSelected(self, "meshout_flag", "1")
         BlackLabel:
             text: "2"
             halign: "right"
         CheckBox:
+            id: meshout_flag-check_2    
             group: "meshout_flag"
             on_active: root: root.checkboxSelected(self, "meshout_flag", "2")           
     Label: # Empty position for row alignment
@@ -150,12 +163,14 @@
             text: "on"
             halign: "right"
         CheckBox:
+            id: restart-check_on    
             group: "restart"    
             on_active: root.checkboxSelected(self, "restart", "on")  
         BlackLabel:
             text: "off"            
             halign: "right"
         CheckBox:
+            id: restart-check_off    
             group: "restart"
             on_active: root.checkboxSelected(self, "restart", "off")
     Label: # Empty position for row alignment
@@ -165,10 +180,10 @@
     BlackLabel:
         text: "testcase:"       
     Spinner:
-        id: testcase
+        id: testcase-spinner
         text: ""
         values: ["0", "1", "2"]
-        on_text: root.spinnerClicked("textcase", self.text)
+        on_text: root.spinnerClicked("testcase", self.text)
         option_cls: "CustomizedSpinnerOption" # For customize the option outlook of the spinner layout 
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
@@ -177,10 +192,10 @@
     BlackLabel:
         text: "analytic:"
     Spinner:
-        id: analytic
+        id: analytic-spinner
         text: ""
         values: ["0", "1", "2", "3", "-1"]
-        on_text: root.spinnerClicked("analytic", self. text)
+        on_text: root.spinnerClicked("analytic", self.text)
         option_cls: "CustomizedSpinnerOption"
     
     Label: # Empty position for row alignment
@@ -195,12 +210,14 @@
             text: "on"
             halign: "right"
         CheckBox:
+            id: steady-check_on    
             group: "steady"
             on_active: root.checkboxSelected(self, "steady", "on")
         BlackLabel:
             text: "off"
             halign: "right"
         CheckBox:
+            id: steady-check_off    
             group: "steady"
             on_active: root.checkboxSelected(self, "steady", "off")       
     Label: # Empty position for row alignment
@@ -215,12 +232,14 @@
             text: "on"
             halign: "right"
         CheckBox:
+            id: fixed_dt-check_on    
             group: "fixed_dt"
             on_active: root.checkboxSelected(self, "fixed_dt", "on")
         BlackLabel:
             text: "off"
             halign: "right"
         CheckBox:
+            id: fixed_dt-check_off    
             group: "fixed_dt"
             on_active: root.checkboxSelected(self, "fixed_dt", "off")        
     Label: # Empty position for row alignment
@@ -230,6 +249,7 @@
     BlackLabel:
         text: "dt:"
     TextInput:
+        id: dt-    
         text: ""
         multiline: False        
         on_text: root.typeInsideTextInput("dt", self.text)
@@ -240,14 +260,17 @@
     BlackLabel:
         text: "CFL_range"
     TextInput:
+        id: CFL_range-text_0    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("CFL_range", self.text, seqLen = 3, idxOfCurrentTextIpt = 0)
     TextInput:
+        id: CFL_range-text_1    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("CFL_range", self.text, seqLen = 3, idxOfCurrentTextIpt = 1)
     TextInput:
+        id: CFL_range-text_2    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("CFL_range", self.text, seqLen = 3, idxOfCurrentTextIpt = 2)
@@ -256,6 +279,7 @@
     BlackLabel:
         text: "ntsout:"
     TextInput:
+        id: ntsout-    
         text: ""
         multiline: False
         on_text: root.typeInsideTextInput("ntsout", self.text)
@@ -266,6 +290,7 @@
     BlackLabel:
         text: "nts_max:"
     TextInput:
+        id: nts_max-    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("nts_max", self.text)
@@ -276,6 +301,7 @@
     BlackLabel:
         text: "steady_conv_order:"
     TextInput:
+        id: steady_conv_order-    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("steady_conv_order", self.text)
@@ -286,6 +312,7 @@
     BlackLabel:
         text: "steady_tol:"
     TextInput:
+        id: steady_tol-    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("steady_tol", self.text)
@@ -296,18 +323,29 @@
     BlackLabel:
         text: "steady_monitor:"
     Spinner:
-        id: steady_monitor 
+        id: steady_monitor-text_0 
         text: ""
         values: ["0", "1", "2"]
-        on_text: root.spinnerClicked("steady_monitor", self.text)
+        # on_text: root.spinnerClicked("steady_monitor", self.text)
+        on_text: root.typeInsideTextInput("steady_monitor", self.text, seqLen=3, idxOfCurrentTextIpt=0)
         option_cls: "CustomizedSpinnerOption"
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
+    TextInput:
+        id: steady_monitor-text_1    
+        text: ""
+        multiline: False    
+        on_text: root.typeInsideTextInput("steady_monitor", self.text, seqLen=3, idxOfCurrentTextIpt=1)
+    TextInput:
+        id: steady_monitor-text_2  
+        text: ""
+        multiline: False    
+        on_text: root.typeInsideTextInput("steady_monitor", self.text, seqLen=3, idxOfCurrentTextIpt=2)
+        
 
     # row 21: tbeg 
     BlackLabel:
         text: "tbeg:"
     TextInput:
+        id: tbeg-    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("tbeg", self.text)
@@ -318,6 +356,7 @@
     BlackLabel:
         text: "tend:"
     TextInput:
+        id: tend-    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("tend", self.text)
@@ -328,6 +367,7 @@
     BlackLabel:
         text: "niterno_max:"
     TextInput:
+        id: niterno_max-    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("niterno_max", self.text)
@@ -338,6 +378,7 @@
     BlackLabel:
         text: "niter_conv_order:"
     TextInput:
+        id: niter_conv_order-    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("niter_conv_order", self.text)
@@ -348,6 +389,7 @@
     BlackLabel:
         text: "niter_tol:"
     TextInput:
+        id: niter_tol-    
         text: ""
         multiline: False    
         on_text: root.typeInsideTextInput("niter_tol", self.text)

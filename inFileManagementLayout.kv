@@ -9,7 +9,8 @@
         padding: 10
         spacing: 10
         InFileChooser:
-            id: inFileChooser    
+            id: inFileChooser   
+             
             # 1. filters Property:
     	    #     •The filters property of FileChooserListView is a list of functions (or glob patterns) that are used to determine which files and directories should be displayed.
 	        #     •Each function in this list is called for every item (file or directory) in the current directory being displayed.
@@ -34,7 +35,7 @@
                 id: leftButton    
                 text: "Save"            
                 size_hint: (0.2, 1)
-                on_release: root.saveDataAndDismissInFileManagementPopupWindow()
+                # on_press: root.saveDataAndDismissInFileManagementPopupWindow()
             MyButton:
                 id: rightButton    
                 text: "Cancel"    
