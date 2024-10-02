@@ -9,6 +9,7 @@
 #             pos: self.pos
 
 #:include customizedComponents.kv
+#:import TabbedPanel kivy.uix.tabbedpanel
 
 <InFileDetailsScreen>
     name: "inDetails"
@@ -16,31 +17,67 @@
         orientation: "vertical"
         size: root.width, root.height
 
-        Accordion:
-            id: acco  
-            orientation: "vertical"
-            AccordionItem:
-                id: panelOne    
-                title: "Mesh Partitioning/Manipulation and Simulation Control" 
-                # min_space: 35
-                ScrollView:
-                    id: panelOneScrollView
-                    orientation: "vertical"
-                    MeshAndSimuControlLayout:
-                        id: meshAndSimuControlLayout
+        # Accordion:
+        #     id: acco  
+        #     orientation: "vertical"
+        #     AccordionItem:
+        #         id: panelOne    
+        #         title: "Mesh Partitioning/Manipulation and Simulation Control" 
+        #         # min_space: 35
+        #         ScrollView:
+        #             id: panelOneScrollView
+        #             orientation: "vertical"
+        #             MeshAndSimuControlLayout:
+        #                 id: meshAndSimuControlLayout
 
-            AccordionItem:
-                id: panelTwo    
-                title: "Simulation Control"
-                Label:
-                    text: "the Second Pannel"
-                    font_size: 50    
-            AccordionItem:
-                id: panelThree    
-                title: "Third"
-                Label:
-                    text: "the Third Pannel"
-                    font_size: 50    
+        #     AccordionItem:
+        #         id: panelTwo    
+        #         title: "Simulation Control"
+        #         Label:
+        #             text: "the Second Pannel"
+        #             font_size: 50    
+        #     AccordionItem:
+        #         id: panelThree    
+        #         title: "Third"
+        #         Label:
+        #             text: "the Third Pannel"
+        #             font_size: 50    
+        TabbedPanel:
+            do_default_tab: False
+            tab_width: self.width/3
+            tab_border: [0, 0, 100, 0]
+            # TabbedPanelHeader:
+            #     text: "test"    
+            #     canvas.before:
+            #         Color:
+            #             rgba: (1, 0, 0, 1) if self.state == 'down' else (0.8, 0.8, 0.8, 1)
+            #         Rectangle: 
+            #             pos: self.pos
+            #             size: self.size    
+
+            TabbedPanelItem:
+                id: panelOne    
+                text: "Mesh"
+                BoxLayout:
+                    canvas.before:
+                        Color:
+                            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+                    ScrollView:
+                        id: panelOneScrollView
+                        orientation: "vertical"
+                        MeshAndSimuControlLayout:
+                            id: meshAndSimuControlLayout    
+            
+            TabbedPanelItem:
+                id: panelTwo
+                text: "Simu-Control"
+
+            TabbedPanelItem:
+                id: panelThree
+                text: "Third"
 
         BoxLayout:
             size_hint: (1, 0.06)
