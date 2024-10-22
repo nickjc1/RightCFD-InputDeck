@@ -1,3 +1,4 @@
+from kivy.uix.accordion import Accordion
 '''
 author: Chao
 
@@ -93,19 +94,21 @@ class InFileDetailsScreen(Screen):
         sm.remove_widget(inFileDetailsScreen)
         inFileDetailsScreen = None
 
-        
-        
-
+    """    
+    # on_enter() and expand_first_panel() functions are used to Accordion Layout
+    # The app's inFileDetailsScreen has been switched to tab layout.
+    
     def on_enter(self, *args):
         Clock.schedule_once(self.expand_first_panel)
 
     def expand_first_panel(self, dt):
-        # Debug: Print the children to understand the order
-        # for i in range(len(self.ids.acco.children)):
-        #     print(self.ids.acco.children[i])
+        Debug: Print the children to understand the order
+        for i in range(len(self.ids.acco.children)):
+            print(self.ids.acco.children[i])
     
-        # Expand the first panel (last in the children list due to reverse order)
+        Expand the first panel (last in the children list due to reverse order)
         self.ids.panelOne.collapse = False
+    """
 
     def checkboxClick(self, thecheckBox, isActive):
         print(isActive)
