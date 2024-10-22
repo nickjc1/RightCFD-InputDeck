@@ -83,7 +83,7 @@ class InFileManagementPopupWindow(Popup):
 
         if True:
             FileManagement.readFile(filePathAndName = filePath)
-            print(entryDataDict)
+            # print(entryDataDict)
 
             inFileDetailsWindow = InFileDetailsScreen()
             self.showDataToInFileDetailsWindow(theWindow=inFileDetailsWindow)
@@ -100,8 +100,16 @@ class InFileManagementPopupWindow(Popup):
     * grab approrate data and put them into widgets of inFileDetailsWindow screen.
     """    
     def showDataToInFileDetailsWindow(self, *, theWindow):
-        meshAndSimuControlLayoutPanel = theWindow.ids["meshAndSimuControlLayout"]
-        ids = meshAndSimuControlLayoutPanel.ids
+
+        # add id objects from meshAndSimuControlLayoutPanel into ids dictionary
+        meshAndSimuControlLayoutTab = theWindow.ids["meshAndSimuControlLayout"]
+        ids = meshAndSimuControlLayoutTab.ids
+        print(ids)
+        
+        # update ids dictionary by adding simuControlLayoutPanel id objects
+        simuControlLayoutTab = theWindow.ids["simuControlLayout"]
+        ids.update(simuControlLayoutTab.ids)
+        print(ids)
         
         for key in entryDataDict:
             # print(key)

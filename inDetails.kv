@@ -56,7 +56,7 @@
             #             size: self.size    
 
             TabbedPanelItem:
-                id: panelOne    
+                id: tapOne 
                 text: "Mesh"
                 BoxLayout:
                     canvas.before:
@@ -72,8 +72,20 @@
                             id: meshAndSimuControlLayout    
             
             TabbedPanelItem:
-                id: panelTwo
+                id: tapTwo
                 text: "Simu-Control"
+                BoxLayout:
+                    canvas.before:
+                        Color:
+                            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+                    ScrollView:
+                        id: panelOneScrollView
+                        orientation: "vertical"
+                        SimuControlLayout:
+                            id: simuControlLayout
 
             TabbedPanelItem:
                 id: panelThree
