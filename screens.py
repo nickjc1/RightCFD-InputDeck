@@ -19,6 +19,7 @@ from kivy.app import App
 from inFileManagement import InFileManagementPopupWindow # The File contains popup window, which is used to  save data to local disk, functionality
 from meshAndSimuControl import MeshAndSimuControlLayout
 from simuControl import SimuControlLayout
+from laSolver import LASolverLayout
 
 from inDataDict import entryDataDict
 

@@ -56,7 +56,7 @@
             #             size: self.size    
 
             TabbedPanelItem:
-                id: tapOne 
+                id: tabOne 
                 text: "Mesh"
                 BoxLayout:
                     canvas.before:
@@ -66,13 +66,13 @@
                             pos: self.pos
                             size: self.size 
                     ScrollView:
-                        id: panelOneScrollView
+                        id: tabOneScrollView
                         orientation: "vertical"
                         MeshAndSimuControlLayout:
                             id: meshAndSimuControlLayout    
             
             TabbedPanelItem:
-                id: tapTwo
+                id: tabTwo
                 text: "Simu-Control"
                 BoxLayout:
                     canvas.before:
@@ -82,14 +82,28 @@
                             pos: self.pos
                             size: self.size 
                     ScrollView:
-                        id: panelOneScrollView
+                        id: tabTwoScrollView 
                         orientation: "vertical"
                         SimuControlLayout:
                             id: simuControlLayout
 
             TabbedPanelItem:
-                id: panelThree
-                text: "Third"
+                id: tabThree 
+                text: "LA Solvers"
+                BoxLayout:
+                    canvas.before:    
+                        Color:
+                            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+                    ScrollView:
+                        id: tabThreeScrollView
+                        orientation: "vertical"
+                        LASolverLayout:
+                            id: laSolverLayout    
+
+
 
         BoxLayout:
             size_hint: (1, 0.06)

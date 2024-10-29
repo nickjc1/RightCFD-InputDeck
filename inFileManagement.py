@@ -101,15 +101,22 @@ class InFileManagementPopupWindow(Popup):
     """    
     def showDataToInFileDetailsWindow(self, *, theWindow):
 
-        # add id objects from meshAndSimuControlLayoutPanel into ids dictionary
+        # add id objects from meshAndSimuControlLayoutTab into ids dictionary
         meshAndSimuControlLayoutTab = theWindow.ids["meshAndSimuControlLayout"]
         ids = meshAndSimuControlLayoutTab.ids
-        print(ids)
+        # print(ids)
         
-        # update ids dictionary by adding simuControlLayoutPanel id objects
+        # update ids dictionary by adding simuControlLayoutTab id objects
         simuControlLayoutTab = theWindow.ids["simuControlLayout"]
         ids.update(simuControlLayoutTab.ids)
+        # print(ids)
+        
+        # update ids dictionary by adding laSolverLayout id objects
+        laSolverLayoutTab = theWindow.ids["laSolverLayout"]
+        ids.update(laSolverLayoutTab.ids)
         print(ids)
+
+
         
         for key in entryDataDict:
             # print(key)
