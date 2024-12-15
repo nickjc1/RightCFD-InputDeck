@@ -3,8 +3,10 @@ from kivy.uix.gridlayout import GridLayout
 
 from inDataDict import entryDataDict
 
-Builder.load_file("meshAndSimuControl.kv")
-class MeshAndSimuControlLayout(GridLayout):
+from customizedComponents.customizedComponents import *
+
+Builder.load_file("meshControl/meshControl.kv")
+class MeshControlLayout(GridLayout):
 
     """
     * The method to save user selection as well as selection key to entryDataDict
@@ -48,4 +50,4 @@ class MeshAndSimuControlLayout(GridLayout):
                 entryDataDict[key][idxOfCurrentTextIpt] = value
         else:
             entryDataDict[key] = value
-        print(entryDataDict["steady_monitor"])
+        # print(entryDataDict)

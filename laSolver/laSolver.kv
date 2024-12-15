@@ -1,0 +1,131 @@
+# :include customizedComponents.kv
+
+<LASolverLayout>
+    # Add below two lines to ensure that the scrollView which contains this meshAndSimuCOntrollayout works.
+    size_hint_y: None
+    height: self.minimum_height 
+
+    cols: 4
+    row_force_default: True
+    row_default_height: 50
+    col_force_default: True
+    col_default_width: 260
+    spacing: 10
+    padding: 20
+
+    # row 1: gmre
+    BlackLabel:
+        text: "gmres:"
+    BoxLayout:
+        orientation: "horizontal"
+        BlackLabel:
+            text: "on"
+            halign: "right"
+        CheckBox:
+            id: gmres-check_on    
+            group: "gmres"    
+            on_active: root.checkboxSelected(self, "gmres", "on")  
+        BlackLabel:
+            text: "off"            
+            halign: "right"
+        CheckBox:
+            id: gmres-check_off    
+            group: "gmres"
+            on_active: root.checkboxSelected(self, "gmres", "off")
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 2: nKrylov
+    BlackLabel:
+        text: "nKrylov:"    
+    TextInput:
+        id: nKrylov-
+        text: ""    
+        multiline: False
+        on_text: root.typeInsideTextInput("nKrylov", self.text)
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 3: nRestart
+    BlackLabel:
+        text: "nRestart:"
+    TextInput:
+        id: nRestart-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("nRestart", self.text) 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment 
+
+    # row 4: gmres_conv_order
+    BlackLabel:
+        text: "gmres_conv_order:"
+    TextInput:
+        id: gmres_conv_order-
+        text: ""
+        multiline: False    
+        on_text: root.typeInsideTextInput("gmres_conv_order", self.text)
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 5: gmres_tol 
+    BlackLabel:
+        text: "gmres_tol:"
+    TextInput:
+        id: gmres_tol-
+        text: ""
+        multiline: False    
+        on_text: root.typeInsideTextInput("gmres_tol", self.text)
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+            
+    # row 6: Empty row
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment    
+
+    # row 7: cg    
+    BlackLabel:
+        text: "cg:"    
+    TextInput:
+        id: cg-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("cg", self.text)
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+        
+    # row 8: cg_conv_order    
+    BlackLabel:
+        text: "cg_conv_order:"    
+    TextInput:
+        id: cg_conv_order-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("cg_conv_order", self.text)
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 7: cg_tol    
+    BlackLabel:
+        text: "cg_tol:"    
+    TextInput:
+        id: cg_tol-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("cg_tol", self.text)
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 7: pcg_flag    
+    BlackLabel:
+        text: "pcg_flag:"    
+    Spinner:
+        id: pcg_flag-spinner
+        text: ""
+        values: ["0", "1", "2"]
+        on_text: root.spinnerClicked("pcg_flag", self.text)
+        option_cls: "CustomizedSpinnerOption"
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment        

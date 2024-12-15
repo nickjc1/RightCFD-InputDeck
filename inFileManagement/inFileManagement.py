@@ -5,9 +5,8 @@ from kivy.app import App
 
 from inDataDict import entryDataDict
 
-Builder.load_file("inFileManagementLayout.kv")
-
-class InFileManagementPopupWindow(Popup):
+Builder.load_file("inFileManagement/inFileManagementPopupWindow.kv")
+class InFileManagementPopupWindowLayout(Popup):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -77,15 +76,15 @@ class InFileManagementPopupWindow(Popup):
     """
     def importSelectedFileData(self, instance):
         # local import -- to avoid the circular dependency
-        from screens import InFileDetailsScreen
+        from screens import InFileDetailsScreenLayout
         # print(self.selectedFilePath)
         filePath = self.selectedFilePath
 
         if True:
             FileManagement.readFile(filePathAndName = filePath)
-            print(entryDataDict)
+            # print(entryDataDict)
 
-            inFileDetailsWindow = InFileDetailsScreen()
+            inFileDetailsWindow = InFileDetailsScreenLayout()
             self.showDataToInFileDetailsWindow(theWindow=inFileDetailsWindow)
 
             sm = App.get_running_app().root
@@ -100,8 +99,23 @@ class InFileManagementPopupWindow(Popup):
     * grab approrate data and put them into widgets of inFileDetailsWindow screen.
     """    
     def showDataToInFileDetailsWindow(self, *, theWindow):
-        meshAndSimuControlLayoutPanel = theWindow.ids["meshAndSimuControlLayout"]
-        ids = meshAndSimuControlLayoutPanel.ids
+
+        # add id objects from meshAndSimuControlLayoutTab into ids dictionary
+        meshControlLayoutTab = theWindow.ids["meshControlLayout"]
+        ids = meshControlLayoutTab.ids
+        # print(ids)
+        
+        # update ids dictionary by adding simuControlLayoutTab id objects
+        simuControlLayoutTab = theWindow.ids["simuControlLayout"]
+        ids.update(simuControlLayoutTab.ids)
+        # print(ids)
+        
+        # update ids dictionary by adding laSolverLayout id objects
+        laSolverLayoutTab = theWindow.ids["laSolverLayout"]
+        ids.update(laSolverLayoutTab.ids)
+        # print(ids)
+
+
         
         for key in entryDataDict:
             # print(key)
@@ -134,7 +148,7 @@ class InFileManagementPopupWindow(Popup):
                             ids[key + "-"].text = entryDataDict[key]
                             break
 
-    
+
 class InFileChooser(FileChooserListView):
     pass
 
@@ -167,6 +181,7 @@ class FileManagement:
                         pass
                 line = file.readline()
             file.close()
+            print(entryDataDict)
     
     @classmethod
     def writeToFile(cls, *, filePathAndName):

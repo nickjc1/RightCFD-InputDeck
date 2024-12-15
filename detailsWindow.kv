@@ -8,10 +8,10 @@
 #             size: self.size
 #             pos: self.pos
 
-#:include customizedComponents.kv
+# :include customizedComponents.kv
 #:import TabbedPanel kivy.uix.tabbedpanel
 
-<InFileDetailsScreen>
+<InFileDetailsScreenLayout>
     name: "inDetails"
     BoxLayout:
         orientation: "vertical"
@@ -44,7 +44,7 @@
         #             font_size: 50    
         TabbedPanel:
             do_default_tab: False
-            tab_width: self.width/3
+            tab_width: self.width/3.5
             tab_border: [0, 0, 100, 0]
             # TabbedPanelHeader:
             #     text: "test"    
@@ -56,7 +56,7 @@
             #             size: self.size    
 
             TabbedPanelItem:
-                id: panelOne    
+                id: tabOne 
                 text: "Mesh"
                 BoxLayout:
                     canvas.before:
@@ -66,18 +66,51 @@
                             pos: self.pos
                             size: self.size 
                     ScrollView:
-                        id: panelOneScrollView
+                        id: tabOneScrollView
                         orientation: "vertical"
-                        MeshAndSimuControlLayout:
-                            id: meshAndSimuControlLayout    
+                        MeshControlLayout:
+                            id: meshControlLayout    
             
             TabbedPanelItem:
-                id: panelTwo
+                id: tabTwo
                 text: "Simu-Control"
+                BoxLayout:
+                    canvas.before:
+                        Color:
+                            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+                    ScrollView:
+                        id: tabTwoScrollView 
+                        orientation: "vertical"
+                        SimuControlLayout:
+                            id: simuControlLayout
 
             TabbedPanelItem:
-                id: panelThree
-                text: "Third"
+                id: tabThree 
+                text: "LA Solvers"
+                BoxLayout:
+                    canvas.before:    
+                        Color:
+                            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+                    ScrollView:
+                        id: tabThreeScrollView
+                        orientation: "vertical"
+                        LASolverLayout:
+                            id: laSolverLayout    
+            
+            TabbedPanelItem:
+                id: tabFour
+                text: "Boundary Condition"
+                BoundaryConditionLayout:
+                    id: BoundaryConditionLayout    
+
+
+
 
         BoxLayout:
             size_hint: (1, 0.06)

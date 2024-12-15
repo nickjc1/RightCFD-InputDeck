@@ -1,158 +1,17 @@
-<BlackLabel@Label>
-    text_size: (self.width, None) #sets the width to the width of the label itself (self.width) and leaves the height unrestricted (None). This is necessary for the halign and valign properties to take effect because it defines the bounding box within which the text will be aligned.
-    halign: "left"
-    color: (0, 0, 0, 1)  
+# :include customizedComponents.kv
 
-<CustomizedSpinnerOption@SpinnerOption>
-    height: 30
-    # background_normal: ""
-    # background_color: utils.get_color_from_hex("#2B93C3")
-
-<MeshAndSimuControlLayout>
-
+<SimuControlLayout>
     # Add below two lines to ensure that the scrollView which contains this meshAndSimuCOntrollayout works.
     size_hint_y: None
     height: self.minimum_height 
 
-    cols: 4    
-    row_force_default: True 
+    cols: 4
+    row_force_default: True
     row_default_height: 50
-    col_force_default: True 
+    col_force_default: True
     col_default_width: 260
     spacing: 10
     padding: 20
-
-    # row 1: part_method
-    BlackLabel:
-        text: "part_method:"
-    BoxLayout:
-        orientation: "horizontal"    
-        BlackLabel:
-            text: "1"
-            halign: "right"
-        CheckBox:
-            id: part_method-check_1    
-            group: "part_method_group"    
-            on_active: root.checkboxSelected(self, "part_method", "1") 
-        BlackLabel:
-            text: "2"
-            halign: "right"
-        CheckBox:
-            id: part_method-check_2    
-            group: "part_method_group"    
-            on_active: root.checkboxSelected(self, "part_method", "2")    
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
-
-    # row 2: cmargin            
-    BlackLabel: 
-        text: "cmargin:"
-    TextInput:
-        id: cmargin-    
-        text: ""    
-        multiline: False 
-        on_text: root.typeInsideTextInput("cmargin", self.text)
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
-    
-    # row 3: vmargin
-    BlackLabel:
-        text: "vmargin:"
-    TextInput:
-        id: vmargin-    
-        text: ""
-        multiline: False
-        on_text: root.typeInsideTextInput("vmargin", self.text)
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
-        
-    # row 4:  mshift
-    BlackLabel:
-        text: "mshift:"
-    TextInput:
-        id: mshift-text_0    
-        text: ""
-        multiline: False
-        on_text: root.typeInsideTextInput("mshift", self.text, seqLen = 3, idxOfCurrentTextIpt = 0)
-    TextInput:
-        id: mshift-text_1    
-        text: ""
-        multiline: False
-        on_text: root.typeInsideTextInput("mshift", self.text, seqLen = 3, idxOfCurrentTextIpt = 1)
-    TextInput:
-        id: mshift-text_2    
-        text: ""
-        multiline: False
-        on_text: root.typeInsideTextInput("mshift", self.text, seqLen = 3, idxOfCurrentTextIpt = 2)
-
-    # row 5: mscale
-    BlackLabel:
-        text: "mscale:"
-    TextInput:
-        id: mscale-text_0    
-        text: ""
-        multiline: False
-        on_text: root.typeInsideTextInput("mscale", self.text, seqLen = 3, idxOfCurrentTextIpt = 0)
-    TextInput:
-        id: mscale-text_1    
-        text: ""
-        multiline: False
-        on_text: root.typeInsideTextInput("mscale", self.text, seqLen = 3, idxOfCurrentTextIpt = 1)
-    TextInput:
-        id: mscale-text_2    
-        text: ""
-        multiline: False
-        on_text: root.typeInsideTextInput("mscale", self.text, seqLen = 3, idxOfCurrentTextIpt = 2)
-    
-    # row 6: multizone
-    BlackLabel:
-        text: "multizone:"
-    BoxLayout:
-        orientation: "horizontal"    
-        BlackLabel:
-            text: "on"
-            halign: "right"
-        CheckBox:
-            id: multizone-check_on    
-            group: "multizone"    
-            on_active: root.checkboxSelected(self, "multizone", "on")  
-        BlackLabel:
-            text: "off"            
-            halign: "right"
-        CheckBox:
-            id: multizone-check_off    
-            group: "multizone"
-            on_active: root.checkboxSelected(self, "multizone", "off")
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
-
-    # row 7: meshout_flag
-    BlackLabel:
-        text: "meshout_flag:"
-    BoxLayout:
-        orientation: "horizontal"
-        BlackLabel:
-            text: "1"
-            halign: "right"
-        CheckBox:
-            id: meshout_flag-check_1    
-            group: "meshout_flag"
-            on_active: root.checkboxSelected(self, "meshout_flag", "1")
-        BlackLabel:
-            text: "2"
-            halign: "right"
-        CheckBox:
-            id: meshout_flag-check_2    
-            group: "meshout_flag"
-            on_active: root: root.checkboxSelected(self, "meshout_flag", "2")           
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
-        
-    # row 8: Empty Row to seperate two entries
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
     
     # row 9: restart
     BlackLabel:
@@ -395,4 +254,4 @@
         on_text: root.typeInsideTextInput("niter_tol", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
-                
+
