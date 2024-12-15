@@ -2,8 +2,9 @@ from kivy.lang.builder import Builder
 from kivy.uix.gridlayout import GridLayout
 
 from inDataDict import entryDataDict
+from customizedComponents.customizedComponents import *
 
-Builder.load_file("laSolver.kv")
+Builder.load_file("laSolver/laSolver.kv")
 class LASolverLayout(GridLayout):
     """
     * The method to save user selection as well as selection key to entryDataDict
@@ -11,7 +12,7 @@ class LASolverLayout(GridLayout):
     """
     def checkboxSelected(self, theCheckbox, entryKey, selectedValue):
         entryDataDict[entryKey] = selectedValue
-        print(entryDataDict)
+        # print(entryDataDict)
         # print(len(entryDataDict))
     
     """
@@ -20,7 +21,7 @@ class LASolverLayout(GridLayout):
     """
     def spinnerClicked(self, entryKey, selectedValue):
         entryDataDict[entryKey] = selectedValue
-        print(entryDataDict)
+        # print(entryDataDict)
     
     """
     * The method to save user input inside TextInput box to entryDataDict
@@ -47,4 +48,4 @@ class LASolverLayout(GridLayout):
                 entryDataDict[key][idxOfCurrentTextIpt] = value
         else:
             entryDataDict[key] = value
-        print(entryDataDict)
+        # print(entryDataDict)

@@ -2,9 +2,9 @@ from kivy.lang.builder import Builder
 from kivy.uix.gridlayout import GridLayout
 
 from inDataDict import entryDataDict
+from customizedComponents.customizedComponents import *
 
-
-Builder.load_file("simuControl.kv")
+Builder.load_file("simuControl/simuControl.kv")
 class SimuControlLayout(GridLayout):
     """
     * The method to save user selection as well as selection key to entryDataDict
@@ -21,7 +21,7 @@ class SimuControlLayout(GridLayout):
     """
     def spinnerClicked(self, entryKey, selectedValue):
         entryDataDict[entryKey] = selectedValue
-        print(entryDataDict)
+        # print(entryDataDict)
     
     """
     * The method to save user input inside TextInput box to entryDataDict
@@ -48,4 +48,4 @@ class SimuControlLayout(GridLayout):
                 entryDataDict[key][idxOfCurrentTextIpt] = value
         else:
             entryDataDict[key] = value
-        print(entryDataDict)
+        # print(entryDataDict)

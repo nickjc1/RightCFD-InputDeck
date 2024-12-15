@@ -1,4 +1,3 @@
-from kivy.uix.accordion import Accordion
 '''
 author: Chao
 
@@ -11,27 +10,30 @@ screens.py:
 '''
 
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.clock import Clock
+# from kivy.clock import Clock
+# from kivy.uix.accordion import Accordion
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
 from kivy.app import App
 
-from inFileManagement import InFileManagementPopupWindow # The File contains popup window, which is used to  save data to local disk, functionality
-from meshAndSimuControl import MeshAndSimuControlLayout
-from simuControl import SimuControlLayout
-from laSolver import LASolverLayout
+from customizedComponents.customizedComponents import *
+from inFileManagement.inFileManagement import InFileManagementPopupWindowLayout # The File contains popup window, which is used to  save data to local disk, functionality
+from meshControl.meshControl import MeshControlLayout
+from simuControl.simuControl import SimuControlLayout
+from laSolver.laSolver import LASolverLayout
+from boundaryCondition.boundaryCondition import BoundaryConditionLayout
 
 from inDataDict import entryDataDict
 
-Builder.load_file("solverChooserPopup.kv")
-class SolverChooserPopup(Popup):
+Builder.load_file("solverChooserPopupWindow.kv")
+class SolverChooserPopupWindowLayout(Popup):
 
     def gotoInDetails(self):
         sm = App.get_running_app().root
         
         # create inFileDetails screen instance
         # add the instance into the screen manager
-        inFileDetailsWindow = InFileDetailsScreen() # need to import class MeshAndSimuControlLayout()
+        inFileDetailsWindow = InFileDetailsScreenLayout() # need to import class MeshAndSimuControlLayout()
         sm.add_widget(inFileDetailsWindow)
         inFileDetailsWindow.manager.transition.direction = "left" # manager attribute is only assigned to a screen after the sreen is added to the ScreenManager
 
@@ -39,21 +41,19 @@ class SolverChooserPopup(Popup):
 
         self.dismiss()
 
-
 class AppScreenManager(ScreenManager):
      def __init__(self, **kwargs):
          super().__init__(**kwargs)
-
 
 Builder.load_file("naviWindow.kv")
 class StartUpScreen(Screen):
 
     def createNewInFile(self):
-        popup = SolverChooserPopup()
+        popup = SolverChooserPopupWindowLayout()
         popup.open()
     
     def importExistingInFile(self):
-        popup = InFileManagementPopupWindow()
+        popup = InFileManagementPopupWindowLayout()
 
         # A widget can only be removed from its parent widget.
         # So in order to remove inPathTextInput, we need to find out its parent widget.
@@ -73,11 +73,11 @@ class StartUpScreen(Screen):
 
         popup.open()
 
-Builder.load_file("inDetails.kv")
-class InFileDetailsScreen(Screen):
+Builder.load_file("detailsWindow.kv")
+class InFileDetailsScreenLayout(Screen):
 
     def saveAs(self):
-        saveAsLayout = InFileManagementPopupWindow() 
+        saveAsLayout = InFileManagementPopupWindowLayout() 
         saveAsLayout.bindSaveDataAndDismissInFileManagementPopupWindowToLeftButton()
         saveAsLayout.open()
     

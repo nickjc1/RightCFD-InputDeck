@@ -5,9 +5,8 @@ from kivy.app import App
 
 from inDataDict import entryDataDict
 
-Builder.load_file("inFileManagementLayout.kv")
-
-class InFileManagementPopupWindow(Popup):
+Builder.load_file("inFileManagement/inFileManagementPopupWindow.kv")
+class InFileManagementPopupWindowLayout(Popup):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -77,7 +76,7 @@ class InFileManagementPopupWindow(Popup):
     """
     def importSelectedFileData(self, instance):
         # local import -- to avoid the circular dependency
-        from screens import InFileDetailsScreen
+        from screens import InFileDetailsScreenLayout
         # print(self.selectedFilePath)
         filePath = self.selectedFilePath
 
@@ -85,7 +84,7 @@ class InFileManagementPopupWindow(Popup):
             FileManagement.readFile(filePathAndName = filePath)
             # print(entryDataDict)
 
-            inFileDetailsWindow = InFileDetailsScreen()
+            inFileDetailsWindow = InFileDetailsScreenLayout()
             self.showDataToInFileDetailsWindow(theWindow=inFileDetailsWindow)
 
             sm = App.get_running_app().root
@@ -102,8 +101,8 @@ class InFileManagementPopupWindow(Popup):
     def showDataToInFileDetailsWindow(self, *, theWindow):
 
         # add id objects from meshAndSimuControlLayoutTab into ids dictionary
-        meshAndSimuControlLayoutTab = theWindow.ids["meshAndSimuControlLayout"]
-        ids = meshAndSimuControlLayoutTab.ids
+        meshControlLayoutTab = theWindow.ids["meshControlLayout"]
+        ids = meshControlLayoutTab.ids
         # print(ids)
         
         # update ids dictionary by adding simuControlLayoutTab id objects
@@ -114,7 +113,7 @@ class InFileManagementPopupWindow(Popup):
         # update ids dictionary by adding laSolverLayout id objects
         laSolverLayoutTab = theWindow.ids["laSolverLayout"]
         ids.update(laSolverLayoutTab.ids)
-        print(ids)
+        # print(ids)
 
 
         
@@ -149,7 +148,7 @@ class InFileManagementPopupWindow(Popup):
                             ids[key + "-"].text = entryDataDict[key]
                             break
 
-    
+
 class InFileChooser(FileChooserListView):
     pass
 
@@ -182,6 +181,7 @@ class FileManagement:
                         pass
                 line = file.readline()
             file.close()
+            print(entryDataDict)
     
     @classmethod
     def writeToFile(cls, *, filePathAndName):

@@ -1,16 +1,16 @@
 #:import utils kivy.utils
 
-<MyButton@Button>:
+<MyButton>:
     font_size: 32 
     background_normal: ""
     background_color: utils.get_color_from_hex("#2B93C3")
 
-<BlackLabel@Label>
+<BlackLabel>
     text_size: (self.width, None) #sets the width to the width of the label itself (self.width) and leaves the height unrestricted (None). This is necessary for the halign and valign properties to take effect because it defines the bounding box within which the text will be aligned.
     halign: "left"
     color: (0, 0, 0, 1)  
 
-<CustomizedSpinnerOption@SpinnerOption>
+<CustomizedSpinnerOption>
     height: 30
     # background_normal: ""
     # background_color: utils.get_color_from_hex("#2B93C3")

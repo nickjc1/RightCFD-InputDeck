@@ -1,0 +1,183 @@
+# :include customizedComponents.kv
+
+<BoundaryConditionLayout>
+    orientation: "vertical"
+    canvas.before:    
+        Color:
+            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+        Rectangle:
+            pos: self.pos
+            size: self.size 
+
+    # This GridLayout is used to contain below info:
+    # 1. nbc: number of Boundary
+    # 2. Add Button
+    # 3. Delete Button    
+    GridLayout:
+        size_hint_y: 0.05    
+        cols: 4
+        row_force_default: True
+        row_default_height: 50
+        col_force_default: True
+        col_default_width: 260
+        spacing: 10
+        padding: 20
+
+        # row 1: nbc 
+        BlackLabel:    
+            text: "nbc:"
+        BlackLabel:
+            id: nbc-    
+            text: "1"
+        MyButton:
+            text: "Add"
+            on_release: root.addOneMoreEntry()
+        MyButton:
+            text: "Delete"  
+
+    # This GridLayout is used to contain the header for bdry_name entries table
+    GridLayout:
+        size_hint_y: 0.05    
+        cols: 4
+        row_force_default: True
+        row_default_height: 50
+        col_force_default: True
+        col_default_width: 260
+        spacing: 10
+        padding: 20
+
+        # row 2: entries header
+        Label:
+        BlackLabel:
+            text: "seq"
+            halign: "right"
+        BlackLabel:
+            text: "bdnum"
+            halign: "right"
+        BlackLabel:
+            text: "name"
+            halign: "right"         
+    
+    # This BoxLayout contains a scrollview that is used to display the bdry_name entries table
+    BoxLayout:
+        size_hint_y: 0.4
+        ScrollView:
+            orientation: "vertical"
+            do_scroll_y: True
+            # do_scroll_x: False
+            GridLayout:
+                # Add below two lines to ensure that the scrollView which contains this BoundaryConditionLayout works.
+                height: self.minimum_height
+                size_hint_y: None    
+
+                id: bdry_nameGridLayout   
+                cols: 4
+                row_force_default: True
+                row_default_height: 50
+                col_force_default: True
+                col_default_width: 260
+                spacing: 10
+                padding: 20
+
+                BlackLabel:
+                    text: "bdry_name"
+                BlackLabel:
+                    text: "1"
+                    halign: "right"
+                TextInput:
+                    text: ""
+                    multiline: False    
+                TextInput:
+                    text: ""
+                    multiline: False
+
+    GridLayout:
+        size_hint_y: 0.05    
+        cols: 12 
+        row_force_default: True
+        row_default_height: 50
+        col_force_default: True
+        col_default_width: 150 
+        spacing: 10
+        padding: 20
+
+        # row 2: entries header
+        Label:
+        BlackLabel:
+            text: "seq"
+            halign: "right"
+        Label:
+        BlackLabel:
+            text: "u"
+        Label:
+        BlackLabel:
+            text: "v"
+        Label:
+        BlackLabel:
+            text: "w"
+        Label:
+        BlackLabel:
+            text: "P"
+        Label:
+        BlackLabel:
+            text: "T"
+        
+    
+    BoxLayout:
+        size_hint_y: 0.35
+        ScrollView:
+            orientation: "vertical"
+            do_scroll_y: True
+            # do_scroll_x: False
+            GridLayout:
+                # Add below two lines to ensure that the scrollView which contains this BoundaryConditionLayout works.
+                height: self.minimum_height
+                size_hint_y: None    
+
+                cols: 12
+                row_force_default: True
+                row_default_height: 50
+                col_force_default: True
+                col_default_width: 150
+                spacing: 10
+                padding: 20
+
+                BlackLabel:
+                    text: "bc"
+                BlackLabel:
+                    text: "1"
+                    halign: "right"
+                TextInput:
+                    text: ""
+                    multiline: False    
+                TextInput:
+                    text: ""
+                    multiline: False
+                TextInput:
+                    text: ""
+                    multiline: False    
+                TextInput:
+                    text: ""
+                    multiline: False
+                TextInput:
+                    text: ""
+                    multiline: False    
+                TextInput:
+                    text: ""
+                    multiline: False
+                TextInput:
+                    text: ""
+                    multiline: False    
+                TextInput:
+                    text: ""
+                    multiline: False
+                TextInput:
+                    text: ""
+                    multiline: False    
+                TextInput:
+                    text: ""
+                    multiline: False
+             
+        
+
+     

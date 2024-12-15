@@ -8,10 +8,10 @@
 #             size: self.size
 #             pos: self.pos
 
-#:include customizedComponents.kv
+# :include customizedComponents.kv
 #:import TabbedPanel kivy.uix.tabbedpanel
 
-<InFileDetailsScreen>
+<InFileDetailsScreenLayout>
     name: "inDetails"
     BoxLayout:
         orientation: "vertical"
@@ -44,7 +44,7 @@
         #             font_size: 50    
         TabbedPanel:
             do_default_tab: False
-            tab_width: self.width/3
+            tab_width: self.width/3.5
             tab_border: [0, 0, 100, 0]
             # TabbedPanelHeader:
             #     text: "test"    
@@ -68,8 +68,8 @@
                     ScrollView:
                         id: tabOneScrollView
                         orientation: "vertical"
-                        MeshAndSimuControlLayout:
-                            id: meshAndSimuControlLayout    
+                        MeshControlLayout:
+                            id: meshControlLayout    
             
             TabbedPanelItem:
                 id: tabTwo
@@ -102,6 +102,13 @@
                         orientation: "vertical"
                         LASolverLayout:
                             id: laSolverLayout    
+            
+            TabbedPanelItem:
+                id: tabFour
+                text: "Boundary Condition"
+                BoundaryConditionLayout:
+                    id: BoundaryConditionLayout    
+
 
 
 
