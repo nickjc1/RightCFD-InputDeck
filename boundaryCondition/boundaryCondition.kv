@@ -31,9 +31,10 @@
             text: "1"
         MyButton:
             text: "Add"
-            on_release: root.addOneMoreEntry()
+            on_release: root.addOneMoreEntry(isNewEntry = True)
         MyButton:
             text: "Delete"  
+            on_release: root.deleteOneBdryEntry()
 
     # This GridLayout is used to contain the header for bdry_name entries table
     GridLayout:
@@ -64,11 +65,13 @@
         ScrollView:
             orientation: "vertical"
             do_scroll_y: True
-            # do_scroll_x: False
+            do_scroll_x: False
             GridLayout:
-                # Add below two lines to ensure that the scrollView which contains this BoundaryConditionLayout works.
+                # Add below three lines to ensure that the scrollView which contains this BoundaryConditionLayout works.
                 height: self.minimum_height
-                size_hint_y: None    
+                # width: self.minimum_width
+                # size_hint: None, None
+                size_hint_y: None
 
                 id: bdry_nameGridLayout   
                 cols: 4
@@ -78,18 +81,24 @@
                 col_default_width: 260
                 spacing: 10
                 padding: 20
-
+                #row 1
                 BlackLabel:
                     text: "bdry_name"
+                    id: bdry_name-11
                 BlackLabel:
                     text: "1"
                     halign: "right"
+                    id: bdseq-12
                 TextInput:
                     text: ""
-                    multiline: False    
+                    multiline: False  
+                    id: bdnum-text-13
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bdnum-text-13")
                 TextInput:
                     text: ""
                     multiline: False
+                    id: bdname-text-14
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bdnum-text-14")
 
     GridLayout:
         size_hint_y: 0.05    
@@ -106,35 +115,35 @@
         BlackLabel:
             text: "seq"
             halign: "right"
-        Label:
+    
         BlackLabel:
-            text: "u"
-        Label:
+            text: "bc-sc"
+            halign: "right"
         BlackLabel:
-            text: "v"
-        Label:
+            text: "bc-sc"
+            halign: "right"
         BlackLabel:
-            text: "w"
-        Label:
+            text: "bc-p"
+            halign: "right"
         BlackLabel:
-            text: "P"
-        Label:
-        BlackLabel:
-            text: "T"
+            text: "bc-p"
+            halign: "right"
+        
         
     
     BoxLayout:
         size_hint_y: 0.35
         ScrollView:
-            orientation: "vertical"
+            # orientation: "vertical"
             do_scroll_y: True
-            # do_scroll_x: False
+            do_scroll_x: True 
             GridLayout:
                 # Add below two lines to ensure that the scrollView which contains this BoundaryConditionLayout works.
                 height: self.minimum_height
                 size_hint_y: None    
 
-                cols: 12
+                id: bcGridLayout
+                cols: 6
                 row_force_default: True
                 row_default_height: 50
                 col_force_default: True
@@ -144,40 +153,29 @@
 
                 BlackLabel:
                     text: "bc"
+                    id: bc-11
                 BlackLabel:
                     text: "1"
                     halign: "right"
+                    id: bc_seq-12
                 TextInput:
                     text: ""
-                    multiline: False    
-                TextInput:
-                    text: ""
-                    multiline: False
-                TextInput:
-                    text: ""
-                    multiline: False    
+                    multiline: False   
+                    id: bc_sc-text-13 
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bc_sc-text-13")
                 TextInput:
                     text: ""
                     multiline: False
-                TextInput:
-                    text: ""
-                    multiline: False    
-                TextInput:
-                    text: ""
-                    multiline: False
-                TextInput:
-                    text: ""
-                    multiline: False    
+                    id: bc_sc-text-14
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bc_sc-text-14")
                 TextInput:
                     text: ""
                     multiline: False
-                TextInput:
-                    text: ""
-                    multiline: False    
+                    id: bc_p-text-15    
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bc_sc-text-15")
                 TextInput:
                     text: ""
                     multiline: False
-             
-        
-
-     
+                    id: bc_p-text-16
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bc_sc-text-16")
+                
