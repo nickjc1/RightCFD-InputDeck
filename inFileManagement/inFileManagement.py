@@ -155,7 +155,7 @@ class InFileChooser(FileChooserListView):
 
 class FileManagement:
 
-    TestEntryData = {}
+    # TestEntryData = {}
 
     @classmethod
     def readFile(cls, *, filePathAndName):
@@ -187,13 +187,42 @@ class FileManagement:
     def writeToFile(cls, *, filePathAndName):
         with open(filePathAndName, "w") as file:
             for key in entryDataDict:
-                if isinstance(entryDataDict[key], list):
+                if (key == "bdry_name" or key == "bc"):
+                    cls.__specialWrite(file, key)
+                elif isinstance(entryDataDict[key], list):
                     str = ""
                     for item in entryDataDict[key]:
                         str  = str + item + " "
                     file.write("{} {}\n".format(key, str))
                 else:
                     file.write("{} {}\n".format(key, entryDataDict[key]))
+    
+    @classmethod
+    def __specialWrite(cls, file, specialKey):
+
+        specialKeyPairs = {"bdry_name": "nbc", "bc": "nbc"}
+
+        # numbers of rows and cols are based on the value(list) of the key.
+        # eg: bdry_name: [1, 1, a, 2, 2, b, 3, 3, c, 4, 4, d]
+        #     numOfRows: 4
+        #     numOfCols: 3
+        numOfRows = entryDataDict[specialKeyPairs[specialKey]]
+        numOfCols = len(entryDataDict[specialKey])//numOfRows
+
+        print("numOfRows: {}, numOfCols: {}".format(numOfRows, numOfCols))
+
+        for i in range(0, numOfRows):
+            file.write("{} ".format(specialKey))
+            str = ""
+            for j in range(0, numOfCols):
+                index = i*numOfCols + j
+                print("i: {}, j: {}, index: {}".format(i, j, index))
+                str += "{} ".format(entryDataDict[specialKey][index])
+            file.write("{}\n".format(str))
+
+
+            
+
 
 
         
