@@ -31,7 +31,7 @@
             text: "1"
         MyButton:
             text: "Add"
-            on_release: root.addOneMoreEntry()
+            on_release: root.addOneMoreEntry(isNewEntry = True)
         MyButton:
             text: "Delete"  
             on_release: root.deleteOneBdryEntry()
@@ -88,7 +88,7 @@
                 BlackLabel:
                     text: "1"
                     halign: "right"
-                    id: seq-12
+                    id: bdseq-12
                 TextInput:
                     text: ""
                     multiline: False  

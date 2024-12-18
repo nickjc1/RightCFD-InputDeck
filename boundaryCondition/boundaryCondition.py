@@ -15,11 +15,11 @@ class BoundaryConditionLayout(BoxLayout):
     """
     def on_kv_post(self, base_widget):
         self.currentNumOfEntry = 1
-        # self.entriesInitialize(numOfEntry=0) # The reason of minus 1 is that by default, there is one entry being set up already after .kv file has been posted.
-        
-        entryDataDict["nbc"] = 1
-        entryDataDict["bdry_name"] = ["1", "", ""]
-        entryDataDict["bc"] = ["1", "", "", "", ""]
+
+        if "nbc" not in entryDataDict: # in case if we import data from .txt file, so that below lines won't wipe out the data that has been read.
+            entryDataDict["nbc"] = 1
+            entryDataDict["bdry_name"] = ["1", "", ""]
+            entryDataDict["bc"] = ["1", "", "", "", ""]
 
         print(entryDataDict)
 
@@ -31,12 +31,13 @@ class BoundaryConditionLayout(BoxLayout):
     """
     def entriesInitialize(self, *, numOfEntry):
         for i in range(numOfEntry):
-            self.addOneMoreEntry()
+            self.addOneMoreEntry(isNewEntry=False)
+            self.currentNumOfEntry == 1
 
     
     """
     """
-    def addOneMoreEntry(self):
+    def addOneMoreEntry(self, *, isNewEntry):
         self.addOneMoreBdryNameEntry()
         self.addOneMoreBdryDetailEntry() 
 
@@ -48,8 +49,9 @@ class BoundaryConditionLayout(BoxLayout):
         newBdryNameEntrySubList = ["{}".format(self.currentNumOfEntry), "", ""]
         newBdryDetailEntrySubList = ["{}".format(self.currentNumOfEntry), "", "", "", ""]
 
-        entryDataDict["bdry_name"].extend(newBdryNameEntrySubList)
-        entryDataDict["bc"].extend(newBdryDetailEntrySubList)
+        if isNewEntry: # if It is to create a new empty entry for user to type in, set to True; If it is to set up certain number of entries for import data, set to False
+            entryDataDict["bdry_name"].extend(newBdryNameEntrySubList)
+            entryDataDict["bc"].extend(newBdryDetailEntrySubList)
             
         # print(self.ids.keys())
         # print(entryDataDict)
@@ -72,7 +74,7 @@ class BoundaryConditionLayout(BoxLayout):
         seqLabel = BlackLabel()
         seqLabel.halign = "right"
         seqLabel.text = "{}".format(self.currentNumOfEntry+1)
-        self.ids["seq-{}2".format(self.currentNumOfEntry+1)] = seqLabel
+        self.ids["bdseq-{}2".format(self.currentNumOfEntry+1)] = seqLabel
 
         bdnumTextInput = TextInput()
         bdnumTextInput.multiline = False

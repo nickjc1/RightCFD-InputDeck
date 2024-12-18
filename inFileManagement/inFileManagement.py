@@ -95,7 +95,7 @@ class InFileManagementPopupWindowLayout(Popup):
             self.dismiss()
 
     """
-    * Cross compair keys inside entryDataDict and ids from meshAndSimuControlLayoutPannel.ids
+    * Cross compair keys inside entryDataDict and ids from eachLayout.ids
     * grab approrate data and put them into widgets of inFileDetailsWindow screen.
     """    
     def showDataToInFileDetailsWindow(self, *, theWindow):
@@ -147,6 +147,46 @@ class InFileManagementPopupWindowLayout(Popup):
                         else: # if the widget of the id is a single TextInput
                             ids[key + "-"].text = entryDataDict[key]
                             break
+
+        meshControlLayoutTab = None
+        simuControlLayoutTab = None
+        laSolverLayoutTab = None
+        
+        # special keys:
+
+        # import data of boundary condition
+        boundaryConditionLayoutTab = theWindow.ids["BoundaryConditionLayout"]
+        numOfRows = int(entryDataDict["nbc"])
+        boundaryConditionLayoutTab.entriesInitialize(numOfEntry = (numOfRows - 1)) # - 1 because by default when this layout posted, there has been 1 row there already.
+        self.__showDataOfSpecialKeys(boundaryConditionLayoutTab, "bdry_name", numOfRows, "bd")
+        self.__showDataOfSpecialKeys(boundaryConditionLayoutTab, "bc", numOfRows, "bc")
+
+        boundaryConditionLayoutTab = None
+
+
+        
+
+    """
+    This Private method is used for import data, which is stored as a list in entryDataDict["key"] and is used to generate a table in the layout. 
+    """
+    def __showDataOfSpecialKeys(self, layoutToBeShown, specialKey, numOfRows, idStartsWith):
+        # numOfRows = int(entryDataDict["nbc"])
+        print()
+        numOfCol = len(entryDataDict[specialKey])//numOfRows
+        print(numOfCol)
+        index = 0
+        for data in entryDataDict[specialKey]:
+            pos = "{}{}".format(index//numOfCol + 1, index%numOfCol + 2)
+            for id in layoutToBeShown.ids:
+                idDetails = id.split("-")
+                if idDetails[-1] == pos and idDetails[0].startswith(idStartsWith):
+                    layoutToBeShown.ids[id].text = data
+                    break
+            index += 1
+
+
+
+        
 
 
 class InFileChooser(FileChooserListView):
@@ -202,21 +242,23 @@ class FileManagement:
 
         specialKeyPairs = {"bdry_name": "nbc", "bc": "nbc"}
 
-        # numbers of rows and cols are based on the value(list) of the key.
-        # eg: bdry_name: [1, 1, a, 2, 2, b, 3, 3, c, 4, 4, d]
-        #     numOfRows: 4
-        #     numOfCols: 3
+        """
+        numbers of rows and cols are based on the value(list) of the key.
+        eg: bdry_name: [1, 1, a, 2, 2, b, 3, 3, c, 4, 4, d]
+            numOfRows: 4
+            numOfCols: 3
+        """
         numOfRows = entryDataDict[specialKeyPairs[specialKey]]
         numOfCols = len(entryDataDict[specialKey])//numOfRows
 
-        print("numOfRows: {}, numOfCols: {}".format(numOfRows, numOfCols))
+        # print("numOfRows: {}, numOfCols: {}".format(numOfRows, numOfCols))
 
         for i in range(0, numOfRows):
             file.write("{} ".format(specialKey))
             str = ""
             for j in range(0, numOfCols):
                 index = i*numOfCols + j
-                print("i: {}, j: {}, index: {}".format(i, j, index))
+                # print("i: {}, j: {}, index: {}".format(i, j, index))
                 str += "{} ".format(entryDataDict[specialKey][index])
             file.write("{}\n".format(str))
 
