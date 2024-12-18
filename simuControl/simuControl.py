@@ -43,8 +43,10 @@ class SimuControlLayout(GridLayout):
                     entryDataDict[key][idxOfCurrentTextIpt] = value
                 else:
                     entryDataDict[key] = [value if i == 0 else "" for i in range(seqLen) ]
+                    # print("At else")
+                    # print(entryDataDict)
             else:
-                entryDataDict[key] = ["" for i in range(seqLen)]
+                entryDataDict[key] = ["" for i in range(seqLen)] #Create a empty list with length of seqlen, It is assigned as the value for the key.
                 entryDataDict[key][idxOfCurrentTextIpt] = value
         else:
             entryDataDict[key] = value

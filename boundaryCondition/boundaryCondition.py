@@ -10,10 +10,18 @@ from customizedComponents.customizedComponents import *
 Builder.load_file("boundaryCondition/boundaryCondition.kv")
 class BoundaryConditionLayout(BoxLayout):
 
-    # This method is called after the kv properties have been set
+    """
+    This method is called after the kv properties have been set
+    """
     def on_kv_post(self, base_widget):
         self.currentNumOfEntry = 1
-        self.entriesInitialize(numOfEntry=5-1) # The reason of minus 1 is that by default, there is one entry being set up already after .kv file has been posted.
+        # self.entriesInitialize(numOfEntry=0) # The reason of minus 1 is that by default, there is one entry being set up already after .kv file has been posted.
+        
+        entryDataDict["nbc"] = 1
+        entryDataDict["bdry_name"] = ["1", "", ""]
+        entryDataDict["bc"] = ["1", "", "", "", ""]
+
+        print(entryDataDict)
 
         return super().on_kv_post(base_widget)
     
@@ -22,7 +30,6 @@ class BoundaryConditionLayout(BoxLayout):
     etriesInitialize() is used to initialize the bdry entries block inside BoundaryConditionLayout. 
     """
     def entriesInitialize(self, *, numOfEntry):
-        
         for i in range(numOfEntry):
             self.addOneMoreEntry()
 
@@ -30,13 +37,22 @@ class BoundaryConditionLayout(BoxLayout):
     """
     """
     def addOneMoreEntry(self):
-
         self.addOneMoreBdryNameEntry()
         self.addOneMoreBdryDetailEntry() 
 
         self.currentNumOfEntry += 1
 
         self.ids["nbc-"].text = "{}".format(self.currentNumOfEntry)
+        entryDataDict["nbc"] = self.currentNumOfEntry
+
+        newBdryNameEntrySubList = ["{}".format(self.currentNumOfEntry), "", ""]
+        newBdryDetailEntrySubList = ["{}".format(self.currentNumOfEntry), "", "", "", ""]
+
+        entryDataDict["bdry_name"].extend(newBdryNameEntrySubList)
+        entryDataDict["bc"].extend(newBdryDetailEntrySubList)
+            
+        # print(self.ids.keys())
+        # print(entryDataDict)
     
     
     """
@@ -49,25 +65,28 @@ class BoundaryConditionLayout(BoxLayout):
         # self.parent.do_layout()
 
         # currentScroll_y = self.parent.scroll_y
-
         bdry_nameLabel = BlackLabel()
         bdry_nameLabel.text = "bdry_name"
-        self.ids["bdry_nameLabel-{}".format(self.currentNumOfEntry+1)] = bdry_nameLabel
+        self.ids["bdry_name-{}1".format(self.currentNumOfEntry+1)] = bdry_nameLabel
 
         seqLabel = BlackLabel()
         seqLabel.halign = "right"
         seqLabel.text = "{}".format(self.currentNumOfEntry+1)
-        self.ids["bdry_nameSeqLabel-{}".format(self.currentNumOfEntry+1)] = seqLabel
+        self.ids["seq-{}2".format(self.currentNumOfEntry+1)] = seqLabel
 
         bdnumTextInput = TextInput()
         bdnumTextInput.multiline = False
         bdnumTextInput.text = ""
-        self.ids["bdry_nameBdnumTextInput-{}".format(self.currentNumOfEntry+1)] = bdnumTextInput
+        bdnumTextInput.id = "bdnum-text-{}3".format(self.currentNumOfEntry+1) 
+        self.ids[bdnumTextInput.id] = bdnumTextInput
+        bdnumTextInput.bind(text=self.typeInsideTextInput)
 
         nameTextInput =  TextInput()
         nameTextInput.multiline = False
-        bdnumTextInput.text = ""
-        self.ids["nameTextInput-{}".format(self.currentNumOfEntry+1)] = nameTextInput
+        nameTextInput.text = ""
+        nameTextInput.id = "bdname-text-{}4".format(self.currentNumOfEntry+1)
+        self.ids[nameTextInput.id] = nameTextInput
+        nameTextInput.bind(text=self.typeInsideTextInput)
 
 
         theLayout = self.ids["bdry_nameGridLayout"]
@@ -82,36 +101,42 @@ class BoundaryConditionLayout(BoxLayout):
     """
     """
     def addOneMoreBdryDetailEntry(self):
-       
-
         bc_label = BlackLabel()
         bc_label.text = "bc"
-        self.ids["bc-{}".format(self.currentNumOfEntry + 1)] = bc_label
+        self.ids["bc-{}1".format(self.currentNumOfEntry + 1)] = bc_label
 
         seqLabel = BlackLabel()
         seqLabel.text = "{}".format(self.currentNumOfEntry + 1)
         seqLabel.halign = "right"
-        self.ids["bc-seq-{}".format(self.currentNumOfEntry + 1)] = seqLabel
+        self.ids["bc_seq-{}2".format(self.currentNumOfEntry + 1)] = seqLabel
 
         bc_sc1 = TextInput()
         bc_sc1.multiline = False
         bc_sc1.text = ""
-        self.ids["bc-sc1-{}".format(self.currentNumOfEntry + 1)] = bc_sc1
+        bc_sc1.id = "bc_sc-text-{}3".format(self.currentNumOfEntry + 1)
+        self.ids[bc_sc1.id] = bc_sc1
+        bc_sc1.bind(text=self.typeInsideTextInput)
 
         bc_sc2 = TextInput()
         bc_sc2.multiline = False
         bc_sc2.text = ""
-        self.ids["bc-sc2-{}".format(self.currentNumOfEntry + 1)] = bc_sc2
+        bc_sc2.id = "bc_sc-text-{}4".format(self.currentNumOfEntry + 1)
+        self.ids[bc_sc2.id] = bc_sc2
+        bc_sc2.bind(text=self.typeInsideTextInput)
 
         bc_p1 = TextInput()
         bc_p1.multiline = False
         bc_p1.text = ""
-        self.ids["bc-p1-{}".format(self.currentNumOfEntry + 1)] = bc_p1
+        bc_p1.id = "bc_p-text-{}5".format(self.currentNumOfEntry + 1)
+        self.ids[bc_p1.id] = bc_p1
+        bc_p1.bind(text=self.typeInsideTextInput)
 
         bc_p2 = TextInput()
         bc_p2.multiline = False
         bc_p2.text = ""
-        self.ids["bc-p2-{}".format(self.currentNumOfEntry + 1)] = bc_p2
+        bc_p2.id = "bc_p-text-{}6".format(self.currentNumOfEntry + 1)
+        self.ids[bc_p2.id] = bc_p2
+        bc_p2.bind(text=self.typeInsideTextInput)
 
         theLayout = self.ids["bcGridLayout"]
         theLayout.add_widget(bc_label)
@@ -127,30 +152,71 @@ class BoundaryConditionLayout(BoxLayout):
     """
     """    
     def deleteOneBdryEntry(self): 
-        if self.currentNumOfEntry > 0 :
+        if self.currentNumOfEntry > 1 :
             bdry_nameGridLayout = self.ids["bdry_nameGridLayout"]
             bcGridLayout = self.ids["bcGridLayout"]
             
-            idToBeDeleted = []
+             
+            idToBeDeleted = []# temporary list that is used to store the ids that are goint to be removed.
+
+            # Get suffixes of the ids of the last line which is going to be deleted.
+            suffixes = ["{}{}".format(self.currentNumOfEntry, i) for i in range(1, 7)]
+            # print(suffixes)
+
+            # remove the widgets of last line of entries from the layout
             for (id_key, widget) in self.ids.items():
-                if id_key.endswith("-{}".format(self.currentNumOfEntry)):
+                if any(id_key.endswith("-{}".format(i)) for i in suffixes):
                     idToBeDeleted.append(id_key)
                     if widget in bdry_nameGridLayout.children:
                         bdry_nameGridLayout.remove_widget(widget)
                     else:
                         bcGridLayout.remove_widget(widget)
-
+            
+            # remove the ids relating to the removed widgets from self.ids dictionary
             for id_key in idToBeDeleted:
                 if id_key in self.ids:
                     self.ids.pop(id_key)
 
-            # print(self.ids)
+            # remove last line of entries from the entryDataDict     
+            for i in range(0, 3):
+                entryDataDict["bdry_name"].pop(-1)
+            for i in range(0, 5):
+                entryDataDict["bc"].pop(-1)
+
+            # print(entryDataDict)
+            # print(self.ids.keys())
             
             self.currentNumOfEntry -= 1
             self.ids["nbc-"].text = "{}".format(self.currentNumOfEntry)
 
             bdry_nameGridLayout = None
             bcGridLayout = None
+
+
+
+
+    def typeInsideTextInput(self, instance, value, *, idFromKv=""):
+
+        # if the id is assigned in the .kv file, the instance.id won't exist. Thus the id needs to be pass here directly through idFromKv parameter
+        if(idFromKv == ""):
+            id = instance.id
+        else:
+            id = idFromKv
+        
+        # print(id)
+
+        idInfos = id.split("-")
+        idNum = int(idInfos[-1])
+        if (idInfos[0].startswith("bd")):
+            index = (idNum//10 - 1)*4 + (idNum%10) - (idNum//10)- 1
+            # print("index is {}".format(index))
+            entryDataDict["bdry_name"][index] = value
+        elif (idInfos[0].startswith("bc")):
+            index = (idNum//10 - 1)*6 + (idNum%10) - (idNum//10)- 1
+            entryDataDict["bc"][index] = value
+
+        print(entryDataDict)
+
 
 
 

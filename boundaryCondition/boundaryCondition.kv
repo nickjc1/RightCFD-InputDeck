@@ -84,19 +84,21 @@
                 #row 1
                 BlackLabel:
                     text: "bdry_name"
-                    id: bdry_name-1
+                    id: bdry_name-11
                 BlackLabel:
                     text: "1"
                     halign: "right"
-                    id: bdry_nameSeqLabel-1
+                    id: seq-12
                 TextInput:
                     text: ""
                     multiline: False  
-                    id: bdry_nameBdnumTextInput-1  
+                    id: bdnum-text-13
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bdnum-text-13")
                 TextInput:
                     text: ""
                     multiline: False
-                    id: nameTextInput-1
+                    id: bdname-text-14
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bdnum-text-14")
 
     GridLayout:
         size_hint_y: 0.05    
@@ -151,25 +153,29 @@
 
                 BlackLabel:
                     text: "bc"
-                    id: bc-1
+                    id: bc-11
                 BlackLabel:
                     text: "1"
                     halign: "right"
-                    id: bc-seq-1
+                    id: bc_seq-12
                 TextInput:
                     text: ""
                     multiline: False   
-                    id: bc-sc1-1 
+                    id: bc_sc-text-13 
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bc_sc-text-13")
                 TextInput:
                     text: ""
                     multiline: False
-                    id: bc-sc2-1
+                    id: bc_sc-text-14
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bc_sc-text-14")
                 TextInput:
                     text: ""
                     multiline: False
-                    id: bc-p1-1    
+                    id: bc_p-text-15    
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bc_sc-text-15")
                 TextInput:
                     text: ""
                     multiline: False
-                    id: bc-p2-1
+                    id: bc_p-text-16
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="bc_sc-text-16")
                 

@@ -85,22 +85,27 @@
     # row 13: fixed_dt 
     BlackLabel:
         text: "fixed_dt:"
-    BoxLayout:
-        orientation: "horizontal"
-        BlackLabel:
-            text: "on"
-            halign: "right"
-        CheckBox:
-            id: fixed_dt-check_on    
-            group: "fixed_dt"
-            on_active: root.checkboxSelected(self, "fixed_dt", "on")
-        BlackLabel:
-            text: "off"
-            halign: "right"
-        CheckBox:
-            id: fixed_dt-check_off    
-            group: "fixed_dt"
-            on_active: root.checkboxSelected(self, "fixed_dt", "off")        
+    TextInput:
+        id: fixed_dt-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("fixed_dt", self.text)
+    # BoxLayout:
+    #     orientation: "horizontal"
+    #     BlackLabel:
+    #         text: "on"
+    #         halign: "right"
+    #     CheckBox:
+    #         id: fixed_dt-check_on    
+    #         group: "fixed_dt"
+    #         on_active: root.checkboxSelected(self, "fixed_dt", "on")
+    #     BlackLabel:
+    #         text: "off"
+    #         halign: "right"
+    #     CheckBox:
+    #         id: fixed_dt-check_off    
+    #         group: "fixed_dt"
+    #         on_active: root.checkboxSelected(self, "fixed_dt", "off")        
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
