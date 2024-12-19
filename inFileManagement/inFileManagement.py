@@ -175,6 +175,12 @@ class InFileManagementPopupWindowLayout(Popup):
 
         boundaryConditionLayoutTab = None
 
+        # import data of linear_Dbc
+        linearDbcLayoutTab = theWindow.ids["linearDbcLayout"]
+        numOfRows = int(entryDataDict["nlinearDbc"])
+        linearDbcLayoutTab.entriesInitialize(numOfEntry = (numOfRows - 1))
+        self.__showDataOfSpecialKeys(linearDbcLayoutTab, "linear_Dbc", numOfRows, "lin")
+
 
         
 
@@ -238,7 +244,7 @@ class FileManagement:
     def writeToFile(cls, *, filePathAndName):
         with open(filePathAndName, "w") as file:
             for key in entryDataDict:
-                if (key == "bdry_name" or key == "bc"):
+                if (key == "bdry_name" or key == "bc" or key == "linear_Dbc"): # special key
                     cls.__specialWrite(file, key)
                 elif isinstance(entryDataDict[key], list):
                     str = ""
@@ -251,7 +257,7 @@ class FileManagement:
     @classmethod
     def __specialWrite(cls, file, specialKey):
 
-        specialKeyPairs = {"bdry_name": "nbc", "bc": "nbc"}
+        specialKeyPairs = {"bdry_name": "nbc", "bc": "nbc", "linear_Dbc": "nlinearDbc"}
 
         """
         numbers of rows and cols are based on the value(list) of the key.
@@ -262,7 +268,7 @@ class FileManagement:
         numOfRows = entryDataDict[specialKeyPairs[specialKey]]
         numOfCols = len(entryDataDict[specialKey])//numOfRows
 
-        # print("numOfRows: {}, numOfCols: {}".format(numOfRows, numOfCols))
+        print("numOfRows: {}, numOfCols: {}".format(numOfRows, numOfCols))
 
         for i in range(0, numOfRows):
             file.write("{} ".format(specialKey))

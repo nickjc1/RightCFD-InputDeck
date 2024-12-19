@@ -1,0 +1,112 @@
+# :include customizedComponents.kv
+<LinearDbcLayout>
+    orientation: "vertical"
+    canvas.before:    
+        Color:
+            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+        Rectangle:
+            pos: self.pos
+            size: self.size 
+
+    GridLayout:
+        size_hint_y: 0.05    
+        cols: 4
+        row_force_default: True
+        row_default_height: 50
+        col_force_default: True
+        col_default_width: 260
+        spacing: 10
+        padding: 20
+
+        # row 1: nlinearDbc 
+        BlackLabel:    
+            text: "nlinearDbc:"
+        BlackLabel:
+            id: nlinearDbc-    
+            text: "1"
+        MyButton:
+            text: "Add"
+            on_release: root.addOneMoreEntry(isNewEntry = True)
+        MyButton:
+            text: "Delete"  
+            on_release: root.deleteOneBdryEntry()
+
+    # This GridLayout is used to contain the header for bdry_name entries table
+    GridLayout:
+        size_hint_y: 0.05    
+        cols: 6 
+        row_force_default: True
+        row_default_height: 50
+        col_force_default: True
+        col_default_width: 260
+        spacing: 10
+        padding: 20
+
+        # row 2: entries header
+        Label:
+        BlackLabel:
+            text: "seq"
+            halign: "right"
+        BlackLabel:
+            text: "bdnum"
+            halign: "right"
+        BlackLabel:
+            text: "dir"
+            halign: "right"         
+        BlackLabel:
+            text: "coefficients k"
+            halign: "right"         
+        BlackLabel:
+            text: "coefficients b"
+            halign: "right"         
+    
+    # This BoxLayout contains a scrollview that is used to display the bdry_name entries table
+    BoxLayout:
+        size_hint_y: 0.9
+        ScrollView:
+            orientation: "vertical"
+            do_scroll_y: True
+            do_scroll_x: False
+            GridLayout:
+                # Add below three lines to ensure that the scrollView which contains this BoundaryConditionLayout works.
+                height: self.minimum_height
+                # width: self.minimum_width
+                # size_hint: None, None
+                size_hint_y: None
+
+                id: linear_DbcGridLayout   
+                cols: 6 
+                row_force_default: True
+                row_default_height: 50
+                col_force_default: True
+                col_default_width: 260
+                spacing: 10
+                padding: 20
+                #row 1
+                BlackLabel:
+                    text: "linear_Dbc"
+                    id: linear_Dbc-11
+                BlackLabel:
+                    text: "1"
+                    halign: "right"
+                    id: linSeq-12
+                TextInput:
+                    text: ""
+                    multiline: False  
+                    id: linBdnum-text-13
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="linBdnum-text-13")
+                TextInput:
+                    text: ""
+                    multiline: False
+                    id: linDir-text-14
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="linDir-text-14")
+                TextInput:
+                    text: ""
+                    multiline: False
+                    id: linK-text-15
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="linK-text-15")
+                TextInput:
+                    text: ""
+                    multiline: False
+                    id: linB-text-16
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="linB-text-16")
