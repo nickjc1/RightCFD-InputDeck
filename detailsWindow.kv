@@ -117,10 +117,26 @@
                         id: tabFourScrollView
                         orientation: "vertical"
                         FlowSolverParametersLayout:
-                            id: flowSolverParametersLayout 
+                            id: flowSolverParametersLayout
 
             TabbedPanelItem:
-                id: tabFour
+                id: tabFive
+                text: "E-Potential Solver Paras"
+                BoxLayout:
+                    canvas.before:    
+                        Color:
+                            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+                    ScrollView:
+                        id: tabFiveScrollView
+                        orientation: "vertical"
+                        ElectricPotentialSolverParametersLayout:
+                            id: electricPotentialSolverParametersLayout 
+
+            TabbedPanelItem:
+                id: tab
                 text: "Boundary Condition"
                 BoundaryConditionLayout:
                     id: BoundaryConditionLayout    
