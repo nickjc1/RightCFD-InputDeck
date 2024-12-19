@@ -134,9 +134,25 @@
                         orientation: "vertical"
                         ElectricPotentialSolverParametersLayout:
                             id: electricPotentialSolverParametersLayout 
+            
+            TabbedPanelItem:
+                id: tabSix
+                text: "IC and Linear Source"
+                BoxLayout:
+                    canvas.before:    
+                        Color:
+                            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+                    ScrollView:
+                        id: tabSixScrollView
+                        orientation: "vertical"
+                        IcAndLinearSourceLayout:
+                            id: icAndLinearSourceLayout
 
             TabbedPanelItem:
-                id: tab
+                id: tabSeven
                 text: "Boundary Condition"
                 BoundaryConditionLayout:
                     id: BoundaryConditionLayout    

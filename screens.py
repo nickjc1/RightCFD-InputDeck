@@ -24,6 +24,7 @@ from laSolver.laSolver import LASolverLayout
 from boundaryCondition.boundaryCondition import BoundaryConditionLayout
 from flowSolverParameters.flowSoverParameters import FlowSolverParametersLayout
 from electricPotentialSolverParameters.electricPotentialSolverParameters import ElectricPotentialSolverParametersLayout
+from icAndLinearSource.icAndLinearSource import IcAndLinearSourceLayout
 
 from inDataDict import entryDataDict
 

@@ -119,9 +119,13 @@ class InFileManagementPopupWindowLayout(Popup):
         flowSolverLayoutTab = theWindow.ids["flowSolverParametersLayout"]
         ids.update(flowSolverLayoutTab.ids)
 
-       # update ids dictionay by adding electricPotentialSolverParametersLayout objects
+        # update ids dictionay by adding electricPotentialSolverParametersLayout objects
         electricPotentialSolverParametersTab = theWindow.ids["electricPotentialSolverParametersLayout"]
         ids.update(electricPotentialSolverParametersTab.ids) 
+        
+        # update ids dictionay by adding icAndLinearSourceLayout objects
+        icAndLinearSourceTab = theWindow.ids["icAndLinearSourceLayout"]
+        ids.update(icAndLinearSourceTab.ids) 
 
 
         

@@ -1,0 +1,54 @@
+# :include customizedComponents.kv
+
+<IcAndLinearSourceLayout>
+    # Add below two lines to ensure that the scrollView which contains this meshAndSimuCOntrollayout works.
+    size_hint_y: None
+    height: self.minimum_height 
+
+    cols: 5
+    row_force_default: True
+    row_default_height: 50
+    col_force_default: True
+    col_default_width: 260
+    spacing: 10
+    padding: 20
+
+    # row 1: ic
+    BlackLabel:
+        text: "ic:"
+    TextInput:
+        id: ic-text_0    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("ic", self.text, seqLen = 2, idxOfCurrentTextIpt = 0)
+    TextInput:
+        id: ic-text_1    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("ic", self.text, seqLen = 2, idxOfCurrentTextIpt = 1)
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 2: linear_source
+    BlackLabel:
+        text: "linear_source:"
+    TextInput:
+        id: linear_source-text_0    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("linear_source", self.text, seqLen = 4, idxOfCurrentTextIpt = 0)
+    TextInput:
+        id: linear_source-text_1    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("linear_source", self.text, seqLen = 4, idxOfCurrentTextIpt = 1)
+    TextInput:
+        id: linear_source-text_2    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("linear_source", self.text, seqLen = 4, idxOfCurrentTextIpt = 2)
+    TextInput:
+        id: linear_source-text_3    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("linear_source", self.text, seqLen = 4, idxOfCurrentTextIpt = 3)
