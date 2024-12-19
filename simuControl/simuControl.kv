@@ -35,30 +35,29 @@
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
     
-    # row 10: testcase 
-    BlackLabel:
-        text: "testcase:"       
-    Spinner:
-        id: testcase-spinner
-        text: ""
-        values: ["0", "1", "2"]
-        on_text: root.spinnerClicked("testcase", self.text)
-        option_cls: "CustomizedSpinnerOption" # For customize the option outlook of the spinner layout 
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
+    # # row 10: testcase 
+    # BlackLabel:
+    #     text: "testcase:"       
+    # Spinner:
+    #     id: testcase-spinner
+    #     text: ""
+    #     values: ["0", "1", "2"]
+    #     on_text: root.spinnerClicked("testcase", self.text)
+    #     option_cls: "CustomizedSpinnerOption" # For customize the option outlook of the spinner layout 
+    # Label: # Empty position for row alignment
+    # Label: # Empty position for row alignment
 
-    # row 11: analytic
-    BlackLabel:
-        text: "analytic:"
-    Spinner:
-        id: analytic-spinner
-        text: ""
-        values: ["0", "1", "2", "3", "-1"]
-        on_text: root.spinnerClicked("analytic", self.text)
-        option_cls: "CustomizedSpinnerOption"
-    
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
+    # # row 11: analytic
+    # BlackLabel:
+    #     text: "analytic:"
+    # Spinner:
+    #     id: analytic-spinner
+    #     text: ""
+    #     values: ["0", "1", "2", "3", "-1"]
+    #     on_text: root.spinnerClicked("analytic", self.text)
+    #     option_cls: "CustomizedSpinnerOption"
+    # Label: # Empty position for row alignment
+    # Label: # Empty position for row alignment
 
     # row 12: steady    
     BlackLabel:
@@ -109,16 +108,16 @@
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
-    # row 14: dt
-    BlackLabel:
-        text: "dt:"
-    TextInput:
-        id: dt-    
-        text: ""
-        multiline: False        
-        on_text: root.typeInsideTextInput("dt", self.text)
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment
+    # # row 14: dt
+    # BlackLabel:
+    #     text: "dt:"
+    # TextInput:
+    #     id: dt-    
+    #     text: ""
+    #     multiline: False        
+    #     on_text: root.typeInsideTextInput("dt", self.text)
+    # Label: # Empty position for row alignment
+    # Label: # Empty position for row alignment
 
     # row 15: CFL_range
     BlackLabel:
@@ -141,12 +140,12 @@
     
     # row 16: ntsout
     BlackLabel:
-        text: "ntsout:"
+        text: "nts_out:"
     TextInput:
-        id: ntsout-    
+        id: nts_out-    
         text: ""
         multiline: False
-        on_text: root.typeInsideTextInput("ntsout", self.text)
+        on_text: root.typeInsideTextInput("nts_out", self.text)
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
@@ -183,26 +182,26 @@
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
-    # row 20: steady_monitor 
-    BlackLabel:
-        text: "steady_monitor:"
-    Spinner:
-        id: steady_monitor-2version_text_0 
-        text: ""
-        values: ["0", "1", "2"]
-        # on_text: root.spinnerClicked("steady_monitor", self.text)
-        on_text: root.typeInsideTextInput("steady_monitor", self.text, seqLen=3, idxOfCurrentTextIpt=0)
-        option_cls: "CustomizedSpinnerOption"
-    TextInput:
-        id: steady_monitor-2version_text_1    
-        text: ""
-        multiline: False    
-        on_text: root.typeInsideTextInput("steady_monitor", self.text, seqLen=3, idxOfCurrentTextIpt=1)
-    TextInput:
-        id: steady_monitor-2version_text_2  
-        text: ""
-        multiline: False    
-        on_text: root.typeInsideTextInput("steady_monitor", self.text, seqLen=3, idxOfCurrentTextIpt=2)
+    # # row 20: steady_monitor 
+    # BlackLabel:
+    #     text: "steady_monitor:"
+    # Spinner:
+    #     id: steady_monitor-2version_text_0 
+    #     text: ""
+    #     values: ["0", "1", "2"]
+    #     # on_text: root.spinnerClicked("steady_monitor", self.text)
+    #     on_text: root.typeInsideTextInput("steady_monitor", self.text, seqLen=3, idxOfCurrentTextIpt=0)
+    #     option_cls: "CustomizedSpinnerOption"
+    # TextInput:
+    #     id: steady_monitor-2version_text_1    
+    #     text: ""
+    #     multiline: False    
+    #     on_text: root.typeInsideTextInput("steady_monitor", self.text, seqLen=3, idxOfCurrentTextIpt=1)
+    # TextInput:
+    #     id: steady_monitor-2version_text_2  
+    #     text: ""
+    #     multiline: False    
+    #     on_text: root.typeInsideTextInput("steady_monitor", self.text, seqLen=3, idxOfCurrentTextIpt=2)
         
 
     # row 21: tbeg 
