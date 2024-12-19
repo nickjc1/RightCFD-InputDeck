@@ -86,13 +86,34 @@
     Label: # Empty position for row alignment    
 
     # row 7: cg    
+    # BlackLabel:
+    #     text: "cg:"    
+    # TextInput:
+    #     id: cg-
+    #     text: ""
+    #     multiline: False
+    #     on_text: root.typeInsideTextInput("cg", self.text)
+    # Label: # Empty position for row alignment
+    # Label: # Empty position for row alignment
+
     BlackLabel:
-        text: "cg:"    
-    TextInput:
-        id: cg-
-        text: ""
-        multiline: False
-        on_text: root.typeInsideTextInput("cg", self.text)
+        text: "cg:"
+    BoxLayout:
+        orientation: "horizontal"
+        BlackLabel:
+            text: "on"
+            halign: "right"
+        CheckBox:
+            id: cg_on    
+            group: "cg"    
+            on_active: root.checkboxSelected(self, "cg", "on")  
+        BlackLabel:
+            text: "off"            
+            halign: "right"
+        CheckBox:
+            id: cg_off    
+            group: "cg"
+            on_active: root.checkboxSelected(self, "cg", "off")
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
         
@@ -118,14 +139,14 @@
     Label: # Empty position for row alignment
     Label: # Empty position for row alignment
 
-    # row 7: pcg_flag    
-    BlackLabel:
-        text: "pcg_flag:"    
-    Spinner:
-        id: pcg_flag-spinner
-        text: ""
-        values: ["0", "1", "2"]
-        on_text: root.spinnerClicked("pcg_flag", self.text)
-        option_cls: "CustomizedSpinnerOption"
-    Label: # Empty position for row alignment
-    Label: # Empty position for row alignment        
+    # # row 7: pcg_flag    
+    # BlackLabel:
+    #     text: "pcg_flag:"    
+    # Spinner:
+    #     id: pcg_flag-spinner
+    #     text: ""
+    #     values: ["0", "1", "2"]
+    #     on_text: root.spinnerClicked("pcg_flag", self.text)
+    #     option_cls: "CustomizedSpinnerOption"
+    # Label: # Empty position for row alignment
+    # Label: # Empty position for row alignment        
