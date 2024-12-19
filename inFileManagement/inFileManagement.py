@@ -169,17 +169,26 @@ class InFileManagementPopupWindowLayout(Popup):
         # import data of boundary condition
         boundaryConditionLayoutTab = theWindow.ids["BoundaryConditionLayout"]
         numOfRows = int(entryDataDict["nbc"])
-        boundaryConditionLayoutTab.entriesInitialize(numOfEntry = (numOfRows - 1)) # - 1 because by default when this layout posted, there has been 1 row there already.
-        self.__showDataOfSpecialKeys(boundaryConditionLayoutTab, "bdry_name", numOfRows, "bd")
-        self.__showDataOfSpecialKeys(boundaryConditionLayoutTab, "bc", numOfRows, "bc")
+        if numOfRows > 0:
+            boundaryConditionLayoutTab.entriesInitialize(numOfEntry = (numOfRows - 1)) # - 1 because by default when this layout posted, there has been 1 row there already.
+            self.__showDataOfSpecialKeys(boundaryConditionLayoutTab, "bdry_name", numOfRows, "bd")
+            self.__showDataOfSpecialKeys(boundaryConditionLayoutTab, "bc", numOfRows, "bc")
 
-        boundaryConditionLayoutTab = None
-
+            boundaryConditionLayoutTab = None
+        
         # import data of linear_Dbc
         linearDbcLayoutTab = theWindow.ids["linearDbcLayout"]
         numOfRows = int(entryDataDict["nlinearDbc"])
-        linearDbcLayoutTab.entriesInitialize(numOfEntry = (numOfRows - 1))
-        self.__showDataOfSpecialKeys(linearDbcLayoutTab, "linear_Dbc", numOfRows, "lin")
+        if numOfRows > 0:
+            linearDbcLayoutTab.entriesInitialize(numOfEntry = (numOfRows - 1))
+            self.__showDataOfSpecialKeys(linearDbcLayoutTab, "linear_Dbc", numOfRows, "lin")
+
+        # import data of lineout_bdry
+        lineoutBdryLayoutTab = theWindow.ids["lineoutBdryLayout"]
+        numOfRows = int(entryDataDict["nlineout_bdry"])
+        if numOfRows > 0:
+            lineoutBdryLayoutTab.entriesInitialize(numOfEntry = (numOfRows - 1))
+            self.__showDataOfSpecialKeys(lineoutBdryLayoutTab, "lineout_bdry", numOfRows, "lineout")
 
 
         
@@ -244,7 +253,7 @@ class FileManagement:
     def writeToFile(cls, *, filePathAndName):
         with open(filePathAndName, "w") as file:
             for key in entryDataDict:
-                if (key == "bdry_name" or key == "bc" or key == "linear_Dbc"): # special key
+                if (key == "bdry_name" or key == "bc" or key == "linear_Dbc" or key == "lineout_bdry"): # special key
                     cls.__specialWrite(file, key)
                 elif isinstance(entryDataDict[key], list):
                     str = ""
@@ -257,7 +266,7 @@ class FileManagement:
     @classmethod
     def __specialWrite(cls, file, specialKey):
 
-        specialKeyPairs = {"bdry_name": "nbc", "bc": "nbc", "linear_Dbc": "nlinearDbc"}
+        specialKeyPairs = {"bdry_name": "nbc", "bc": "nbc", "linear_Dbc": "nlinearDbc", "lineout_bdry": "nlineout_bdry"}
 
         """
         numbers of rows and cols are based on the value(list) of the key.

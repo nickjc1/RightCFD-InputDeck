@@ -1,0 +1,101 @@
+# :include customizedComponents.kv
+<LineoutBdryLayout>
+    orientation: "vertical"
+    canvas.before:    
+        Color:
+            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+        Rectangle:
+            pos: self.pos
+            size: self.size 
+
+    GridLayout:
+        size_hint_y: 0.05    
+        cols: 4
+        row_force_default: True
+        row_default_height: 50
+        col_force_default: True
+        col_default_width: 260
+        spacing: 10
+        padding: 20
+
+        # row 1: nlineout_bdry 
+        BlackLabel:    
+            text: "nlineout_bdry:"
+        BlackLabel:
+            id: nlineout_bdry-    
+            text: "1"
+        MyButton:
+            text: "Add"
+            on_release: root.addOneMoreEntry(isNewEntry = True)
+        MyButton:
+            text: "Delete"  
+            on_release: root.deleteOneBdryEntry()
+    # row2 entry header
+    GridLayout:
+        size_hint_y: 0.05    
+        cols: 5 
+        row_force_default: True
+        row_default_height: 50
+        col_force_default: True
+        col_default_width: 260
+        spacing: 10
+        padding: 20
+
+        Label:
+        BlackLabel:
+            text: "seq"
+            halign: "right"
+        BlackLabel:
+            text: "bdnum"
+            halign: "right"
+        BlackLabel:
+            text: "direction"
+            halign: "right"         
+        BlackLabel:
+            text: "position"
+            halign: "right"         
+    
+    BoxLayout:
+        size_hint_y: 0.9
+        ScrollView:
+            orientation: "vertical"
+            do_scroll_y: True
+            do_scroll_x: False
+            GridLayout:
+                # Add below three lines to ensure that the scrollView which contains this BoundaryConditionLayout works.
+                height: self.minimum_height
+                # width: self.minimum_width
+                # size_hint: None, None
+                size_hint_y: None
+
+                id: lineoutBdryGridLayout   
+                cols: 5
+                row_force_default: True
+                row_default_height: 50
+                col_force_default: True
+                col_default_width: 260
+                spacing: 10
+                padding: 20
+                #row 1
+                BlackLabel:
+                    text: "lineout_bdry"
+                    id: lineout_bdry-11
+                BlackLabel:
+                    text: "1"
+                    halign: "right"
+                    id: lineoutSeq-12
+                TextInput:
+                    text: ""
+                    multiline: False  
+                    id: lineoutBdnum-text-13
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="lineoutBdnum-text-13")
+                TextInput:
+                    text: ""
+                    multiline: False
+                    id: lineoutDirection-text-14
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="lineoutDirection-text-14")
+                TextInput:
+                    text: ""
+                    multiline: False
+                    id: lineoutPosition-text-15
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="lineoutPosition-text-15")
