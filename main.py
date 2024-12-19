@@ -2,8 +2,9 @@ from kivy.config import Config
 # Set the desired window size
 Config.set('graphics', 'width', '1000')
 Config.set('graphics', 'height', '750')
+
 # Disable window resizing
-Config.set('graphics', 'resizable', False)
+# Config.set('graphics', 'resizable', False)
 
 from kivy.app import App
 from kivy.core.window import Window
