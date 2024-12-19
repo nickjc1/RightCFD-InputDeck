@@ -1,0 +1,126 @@
+# :include customizedComponents.kv
+<LineoutInteriorLayout>
+    orientation: "vertical"
+    canvas.before:    
+        Color:
+            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+        Rectangle:
+            pos: self.pos
+            size: self.size 
+
+    GridLayout:
+        size_hint_y: 0.05    
+        cols: 4
+        row_force_default: True
+        row_default_height: 50
+        col_force_default: True
+        col_default_width: 260
+        spacing: 10
+        padding: 20
+
+        # row 1: nlineout_bdry 
+        BlackLabel:    
+            text: "nlineout_interior:"
+        BlackLabel:
+            id: nlineout_interior-    
+            text: "1"
+        MyButton:
+            text: "Add"
+            on_release: root.addOneMoreEntry(isNewEntry = True)
+        MyButton:
+            text: "Delete"  
+            on_release: root.deleteOneBdryEntry()
+
+    # row2 entry header
+    GridLayout:
+        size_hint_y: 0.05    
+        cols: 8 
+        row_force_default: True
+        row_default_height: 50
+        col_force_default: True
+        col_default_width: 220
+        spacing: 10
+        padding: 20
+
+        Label:
+        BlackLabel:
+            text: "seq"
+            halign: "right"
+        BlackLabel:
+            text: "startPos(nsd) X"
+            halign: "right"
+        BlackLabel:
+            text: "startPos(nsd) Y"
+            halign: "right"         
+        BlackLabel:
+            text: "startPos(nsd) Z"
+            halign: "right"         
+        BlackLabel:
+            text: "endPos(nsd) X"
+            halign: "right"
+        BlackLabel:
+            text: "endPos(nsd) Y"
+            halign: "right"         
+        BlackLabel:
+            text: "endPos(nsd) Z"
+            halign: "right"         
+    
+    BoxLayout:
+        size_hint_y: 0.9
+        ScrollView:
+            orientation: "vertical"
+            do_scroll_y: True
+            do_scroll_x: False
+            GridLayout:
+                # Add below three lines to ensure that the scrollView which contains this BoundaryConditionLayout works.
+                height: self.minimum_height
+                # width: self.minimum_width
+                # size_hint: None, None
+                size_hint_y: None
+
+                id: lineoutInteriorGridLayout   
+                cols: 8
+                row_force_default: True
+                row_default_height: 50
+                col_force_default: True
+                col_default_width: 220
+                spacing: 10
+                padding: 20
+                #row 1
+                BlackLabel:
+                    text: "lineout_interior"
+                    id: lineInter-11
+                BlackLabel:
+                    text: "1"
+                    halign: "right"
+                    id: lineInterSeq-12
+                TextInput:
+                    text: ""
+                    multiline: False  
+                    id: lineInterSX-text-13
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="lineInterSX-text-13")
+                TextInput:
+                    text: ""
+                    multiline: False
+                    id: lineInterSY-text-14
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="lineInterSY-text-14")
+                TextInput:
+                    text: ""
+                    multiline: False
+                    id: lineInterSZ-text-15
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="lineInterSZ-text-15")
+                TextInput:
+                    text: ""
+                    multiline: False  
+                    id: lineInterEX-text-16
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="lineInterEX-text-16")
+                TextInput:
+                    text: ""
+                    multiline: False
+                    id: lineInterEY-text-17
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="lineInterEY-text-17")
+                TextInput:
+                    text: ""
+                    multiline: False
+                    id: lineInterEZ-text-18
+                    on_text: root.typeInsideTextInput(self, self.text, idFromKv="lineInterEZ-text-18")

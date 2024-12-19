@@ -27,6 +27,7 @@ from flowSolverParameters.flowSoverParameters import FlowSolverParametersLayout
 from electricPotentialSolverParameters.electricPotentialSolverParameters import ElectricPotentialSolverParametersLayout
 from icAndLinearSource.icAndLinearSource import IcAndLinearSourceLayout
 from lineoutBdry.lineoutBdry import LineoutBdryLayout
+from lineoutInterior.lineoutInterior import LineoutInteriorLayout
 
 from inDataDict import entryDataDict
 

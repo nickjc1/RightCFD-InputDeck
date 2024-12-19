@@ -189,8 +189,13 @@ class InFileManagementPopupWindowLayout(Popup):
         if numOfRows > 0:
             lineoutBdryLayoutTab.entriesInitialize(numOfEntry = (numOfRows - 1))
             self.__showDataOfSpecialKeys(lineoutBdryLayoutTab, "lineout_bdry", numOfRows, "lineout")
-
-
+        
+        # import data of lineout_interior
+        lineoutInteriorLayoutTab = theWindow.ids["lineoutInteriorLayout"]
+        numOfRows = int(entryDataDict["nlineout_interior"])
+        if numOfRows > 0:
+            lineoutInteriorLayoutTab.entriesInitialize(numOfEntry = (numOfRows - 1))
+            self.__showDataOfSpecialKeys(lineoutInteriorLayoutTab, "lineout_interior", numOfRows, "lineInter")
         
 
     """
@@ -253,7 +258,7 @@ class FileManagement:
     def writeToFile(cls, *, filePathAndName):
         with open(filePathAndName, "w") as file:
             for key in entryDataDict:
-                if (key == "bdry_name" or key == "bc" or key == "linear_Dbc" or key == "lineout_bdry"): # special key
+                if (key == "bdry_name" or key == "bc" or key == "linear_Dbc" or key == "lineout_bdry" or key == "lineout_interior"): # special key
                     cls.__specialWrite(file, key)
                 elif isinstance(entryDataDict[key], list):
                     str = ""
@@ -266,7 +271,7 @@ class FileManagement:
     @classmethod
     def __specialWrite(cls, file, specialKey):
 
-        specialKeyPairs = {"bdry_name": "nbc", "bc": "nbc", "linear_Dbc": "nlinearDbc", "lineout_bdry": "nlineout_bdry"}
+        specialKeyPairs = {"bdry_name": "nbc", "bc": "nbc", "linear_Dbc": "nlinearDbc", "lineout_bdry": "nlineout_bdry", "lineout_interior": "nlineout_interior"}
 
         """
         numbers of rows and cols are based on the value(list) of the key.
@@ -277,7 +282,7 @@ class FileManagement:
         numOfRows = entryDataDict[specialKeyPairs[specialKey]]
         numOfCols = len(entryDataDict[specialKey])//numOfRows
 
-        print("numOfRows: {}, numOfCols: {}".format(numOfRows, numOfCols))
+        # print("numOfRows: {}, numOfCols: {}".format(numOfRows, numOfCols))
 
         for i in range(0, numOfRows):
             file.write("{} ".format(specialKey))
