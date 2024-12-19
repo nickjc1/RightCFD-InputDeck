@@ -22,6 +22,7 @@ from meshControl.meshControl import MeshControlLayout
 from simuControl.simuControl import SimuControlLayout
 from laSolver.laSolver import LASolverLayout
 from boundaryCondition.boundaryCondition import BoundaryConditionLayout
+from flowSolverParameters.flowSoverParameters import FlowSolverParametersLayout
 
 from inDataDict import entryDataDict
 

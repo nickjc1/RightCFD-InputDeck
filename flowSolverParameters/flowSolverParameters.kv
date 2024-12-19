@@ -1,0 +1,89 @@
+# :include customizedComponents.kv
+
+<FlowSolverParametersLayout>
+    # Add below two lines to ensure that the scrollView which contains this meshAndSimuCOntrollayout works.
+    size_hint_y: None
+    height: self.minimum_height 
+
+    cols: 4
+    row_force_default: True
+    row_default_height: 50
+    col_force_default: True
+    col_default_width: 260
+    spacing: 10
+    padding: 20
+
+    # row 1: adv_type
+    BlackLabel:
+        text: "adv_type:"
+    Spinner:
+        id: adv_type-spinner
+        text: ""
+        values: ["1", "2", "3", "4"]
+        on_text: root.spinnerClicked("adv_type", self.text)
+        option_cls: "CustomizedSpinnerOption"
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment
+
+    # row 2: adv_const
+    BlackLabel:
+        text: "adv_const:"
+    TextInput:
+        id: adv_const-text_0    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("adv_const", self.text, seqLen = 3, idxOfCurrentTextIpt = 0)
+    TextInput:
+        id: adv_const-text_1    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("adv_const", self.text, seqLen = 3, idxOfCurrentTextIpt = 1)
+    TextInput:
+        id: adv_const-text_2    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("adv_const", self.text, seqLen = 3, idxOfCurrentTextIpt = 2)
+
+    # row 3: vis_const
+    BlackLabel:
+        text: "vis_const:"
+    TextInput:
+        id: vis_const-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("vis_const", self.text) 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment 
+
+    # row 4: src_const
+    BlackLabel:
+        text: "src_const:"
+    TextInput:
+        id: src_const-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("src_const", self.text) 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment  
+    
+    # row 5: ref_vel
+    BlackLabel:
+        text: "ref_vel:"
+    TextInput:
+        id: ref_vel-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("ref_vel", self.text) 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment 
+
+    # row 6: ref_solution
+    BlackLabel:
+        text: "ref_solution:"
+    TextInput:
+        id: ref_solution-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("ref_solution", self.text) 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment 
