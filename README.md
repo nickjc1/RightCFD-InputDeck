@@ -12,7 +12,6 @@
   ```bash
   python -m venv myenv
   source myenv/bin/activate  # On macOS/Linux
-  myenv\Scripts\activate     # On Windows
   pip install kivy[base]
   ```
 - For detailed installation instructions, refer to the [Kivy installation guide](https://kivy.org/doc/stable/gettingstarted/installation.html).
@@ -20,9 +19,8 @@
 ---
 
 ### 2. Clone or Copy the Code onto Your Machine
-- If the repository is hosted on GitHub:
   ```bash
-  git clone https://github.com/your-username/RightCFD-InputDeck.git
+  git clone https://github.com/nickjc1/RightCFD-InputDeck.git
   ```
 - Alternatively, you can download the repository as a ZIP file from GitHub and extract it.
 
@@ -48,7 +46,7 @@
 ## Additional Notes
 
 ### Operating System
-- For the best experience, run the program on **macOS** or **Linux**. The program is tested and optimized for these operating systems.
+- For the best experience, run the program on **macOS** or **Linux**. The program is tested and optimized on MacOS only for now.
 
 ---
 
