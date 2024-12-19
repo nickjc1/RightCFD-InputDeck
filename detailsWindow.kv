@@ -101,10 +101,58 @@
                         id: tabThreeScrollView
                         orientation: "vertical"
                         LASolverLayout:
-                            id: laSolverLayout    
-            
+                            id: laSolverLayout   
+
             TabbedPanelItem:
                 id: tabFour
+                text: "Flow Solver Paras"
+                BoxLayout:
+                    canvas.before:    
+                        Color:
+                            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+                    ScrollView:
+                        id: tabFourScrollView
+                        orientation: "vertical"
+                        FlowSolverParametersLayout:
+                            id: flowSolverParametersLayout
+
+            TabbedPanelItem:
+                id: tabFive
+                text: "E-Potential Solver Paras"
+                BoxLayout:
+                    canvas.before:    
+                        Color:
+                            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+                    ScrollView:
+                        id: tabFiveScrollView
+                        orientation: "vertical"
+                        ElectricPotentialSolverParametersLayout:
+                            id: electricPotentialSolverParametersLayout 
+            
+            TabbedPanelItem:
+                id: tabSix
+                text: "IC and Linear Source"
+                BoxLayout:
+                    canvas.before:    
+                        Color:
+                            rgba: 252/255.0, 251/255.0, 244/255.0, 1  # Background color for the layout
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+                    ScrollView:
+                        id: tabSixScrollView
+                        orientation: "vertical"
+                        IcAndLinearSourceLayout:
+                            id: icAndLinearSourceLayout
+
+            TabbedPanelItem:
+                id: tabSeven
                 text: "Boundary Condition"
                 BoundaryConditionLayout:
                     id: BoundaryConditionLayout    

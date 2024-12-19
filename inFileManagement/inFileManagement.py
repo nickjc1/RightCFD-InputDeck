@@ -114,6 +114,18 @@ class InFileManagementPopupWindowLayout(Popup):
         laSolverLayoutTab = theWindow.ids["laSolverLayout"]
         ids.update(laSolverLayoutTab.ids)
         # print(ids)
+        
+        # update ids dictionay by adding flowSolverParametersLayout id objects
+        flowSolverLayoutTab = theWindow.ids["flowSolverParametersLayout"]
+        ids.update(flowSolverLayoutTab.ids)
+
+        # update ids dictionay by adding electricPotentialSolverParametersLayout objects
+        electricPotentialSolverParametersTab = theWindow.ids["electricPotentialSolverParametersLayout"]
+        ids.update(electricPotentialSolverParametersTab.ids) 
+        
+        # update ids dictionay by adding icAndLinearSourceLayout objects
+        icAndLinearSourceTab = theWindow.ids["icAndLinearSourceLayout"]
+        ids.update(icAndLinearSourceTab.ids) 
 
 
         
@@ -171,9 +183,8 @@ class InFileManagementPopupWindowLayout(Popup):
     """
     def __showDataOfSpecialKeys(self, layoutToBeShown, specialKey, numOfRows, idStartsWith):
         # numOfRows = int(entryDataDict["nbc"])
-        print()
         numOfCol = len(entryDataDict[specialKey])//numOfRows
-        print(numOfCol)
+        # print(numOfCol)
         index = 0
         for data in entryDataDict[specialKey]:
             pos = "{}{}".format(index//numOfCol + 1, index%numOfCol + 2)

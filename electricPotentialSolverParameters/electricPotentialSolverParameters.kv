@@ -1,0 +1,106 @@
+# :include customizedComponents.kv
+
+<ElectricPotentialSolverParametersLayout>
+    # Add below two lines to ensure that the scrollView which contains this meshAndSimuCOntrollayout works.
+    size_hint_y: None
+    height: self.minimum_height 
+
+    cols: 5
+    row_force_default: True
+    row_default_height: 50
+    col_force_default: True
+    col_default_width: 260
+    spacing: 10
+    padding: 20
+
+    # row 1: space_charge
+    BlackLabel:
+        text: "space_charge:"
+    TextInput:
+        id: space_charge-text_0    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("space_charge", self.text, seqLen = 3, idxOfCurrentTextIpt = 0)
+    TextInput:
+        id: space_charge-text_1    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("space_charge", self.text, seqLen = 3, idxOfCurrentTextIpt = 1)
+    TextInput:
+        id: space_charge-text_2    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("space_charge", self.text, seqLen = 3, idxOfCurrentTextIpt = 2)
+    Label: # Empty position for row alignment
+
+    # row 2: const_efield
+    BlackLabel:
+        text: "const_efield:"
+    TextInput:
+        id: const_efield-text_0    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("const_efield", self.text, seqLen = 4, idxOfCurrentTextIpt = 0)
+    TextInput:
+        id: const_efield-text_1    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("const_efield", self.text, seqLen = 4, idxOfCurrentTextIpt = 1)
+    TextInput:
+        id: const_efield-text_2    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("const_efield", self.text, seqLen = 4, idxOfCurrentTextIpt = 2)
+    TextInput:
+        id: const_efield-text_3    
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("const_efield", self.text, seqLen = 4, idxOfCurrentTextIpt = 3)
+
+    # row 3: mobility
+    BlackLabel:
+        text: "mobility:"
+    TextInput:
+        id: mobility-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("mobility", self.text) 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment 
+    Label: # Empty position for row alignment 
+
+    # row 4: ref_voltage
+    BlackLabel:
+        text: "ref_voltage:"
+    TextInput:
+        id: ref_voltage-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("ref_voltage", self.text) 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment  
+    Label: # Empty position for row alignment  
+    
+    # row 5: dielectric_const
+    BlackLabel:
+        text: "dielectric_const:"
+    TextInput:
+        id: dielectric_const-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("dielectric_const", self.text) 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment 
+    Label: # Empty position for row alignment 
+
+    # row 6: nominal_efield
+    BlackLabel:
+        text: "nominal_efield:"
+    TextInput:
+        id: nominal_efield-
+        text: ""
+        multiline: False
+        on_text: root.typeInsideTextInput("nominal_efield", self.text) 
+    Label: # Empty position for row alignment
+    Label: # Empty position for row alignment 
+    Label: # Empty position for row alignment 
